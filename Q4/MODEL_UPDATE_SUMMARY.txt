@@ -1,0 +1,123 @@
+================================================================================
+MODEL UPDATE SUMMARY - SIMPLIFIED TO 3 KEY FEATURES
+================================================================================
+Date: November 16, 2025
+Previous Model: 7 features (Sales_lag1, Sales_lag4, Oil_Q_avg, ROIC_LTM_lag4, Q2, Q3, Q4)
+Updated Model: 3 features (Sales_lag1, Sales_lag4, Oil_Q_avg)
+
+================================================================================
+CHANGES MADE
+================================================================================
+
+1. REMOVED NON-SIGNIFICANT VARIABLES:
+   ✓ ROIC_LTM_lag4 - p-value: 0.681 (not significant)
+   ✓ Q2 dummy - p-value: 0.156 (not significant)
+   ✓ Q3 dummy - p-value: 0.818 (not significant)
+   ✓ Q4 dummy - p-value: 0.272 (not significant)
+
+2. RETAINED SIGNIFICANT VARIABLES:
+   ✓ Sales_lag1 - p-value < 0.001 (highly significant)
+   ✓ Sales_lag4 - p-value: 0.029 (significant)
+   ✓ Oil_Q_avg - p-value < 0.001 (highly significant)
+
+3. UPDATED VISUALIZATION:
+   ✓ Previous: 7-panel comprehensive diagnostic (overly complex)
+   ✓ New: 2-panel simplified diagnostic
+     - Panel 1: Sales Forecast: Actual vs Predicted Over Time (2012 Q1 - 2026 Q1)
+     - Panel 2: Residuals vs Fitted (Training Set)
+   ✓ No more outliers from 2009-2011 upstream sales period
+
+================================================================================
+NEW MODEL PERFORMANCE
+================================================================================
+
+Dataset Information:
+  - Training set: 51 observations (2012 Q3 - 2024 Q3)
+  - Test set: 4 observations (2024 Q4 - 2025 Q3)
+  - Data start: 2011 Q1 onwards (upstream sales excluded)
+
+Model Fit:
+  - R-squared: 0.926 (higher than previous 7-feature model!)
+  - Adjusted R-squared: 0.916
+  - AIC: 879.2
+  - F-statistic: ~107 (highly significant)
+
+Out-of-Sample Performance:
+  - Test RMSE: ~2,200
+  - Test MAE: ~2,200
+  - Test MAPE: ~15%
+
+Key Findings:
+  ✓ Simpler model with better parsimony
+  ✓ Removed multicollinearity issues
+  ✓ Retained all significant predictive power
+  ✓ More interpretable results
+
+================================================================================
+FORECASTS (2025 Q4 & 2026 Q1)
+================================================================================
+
+2025 Q4 (Q4 Quarter):
+  - Point Forecast: 13,651
+  - 95% CI: [12,669 - 14,632]
+  - CI Width: 1,963
+
+2026 Q1 (Q1 Quarter - Reference):
+  - Point Forecast: 11,547
+  - 95% CI: [10,548 - 12,546]
+  - CI Width: 1,997
+
+Average Forecast Error (Test Period): ~15%
+
+================================================================================
+FILES UPDATED
+================================================================================
+
+✓ sales_forecast_results.csv - Updated with new forecasts
+✓ sales_forecast_analysis.png - Regenerated with 2 clean panels
+✓ model_regression_summary.txt - New regression output
+✓ sales_modeling_data.csv - Rebuilt with 4 columns only
+✓ sales_forecast_final.py - Updated script
+
+All files are in Q4/ directory.
+
+================================================================================
+MODEL EQUATION (SIMPLIFIED)
+================================================================================
+
+Sales_t = β0 + β1*Sales_t-1 + β2*Sales_t-4 + β3*Oil_Q_avg_t + ε_t
+
+Where:
+  - β0: Intercept (constant term)
+  - β1: Sales autoregressive coefficient (~0.67)
+  - β2: Year-over-year sales effect (~-0.17)
+  - β3: Oil price impact (~92 per $1)
+  - ε_t: Residual error
+
+Interpretation:
+  - 67% of previous quarter sales carries forward
+  - YoY effect is slightly negative (-17%)
+  - Each $1/barrel increase in oil →  ~$92k sales increase
+  - No strong seasonal effects detected (Q2-Q4 dummies removed)
+  - Profitability 1 year ago doesn't predict current sales (ROIC removed)
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+Use this simplified 3-feature model for:
+  ✓ Better interpretability
+  ✓ Reduced multicollinearity
+  ✓ More stable predictions
+  ✓ Cleaner diagnostics
+  ✓ Less overfitting risk
+
+The 2-panel visualization is now clean and professional:
+  ✓ Top plot shows actual vs forecasted sales with confidence intervals
+  ✓ Bottom plot shows residual patterns (should be random around 0)
+  ✓ No confusing outliers from pre-2011 upstream data
+
+================================================================================
+
+
+

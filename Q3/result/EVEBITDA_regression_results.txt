@@ -1,0 +1,35 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              ev_ebitda   R-squared:                       0.180
+Model:                            OLS   Adj. R-squared:                  0.172
+Method:                 Least Squares   F-statistic:                     21.14
+Date:                Sun, 16 Nov 2025   Prob (F-statistic):           3.80e-39
+Time:                        09:27:56   Log-Likelihood:                -3840.2
+No. Observations:                1068   AIC:                             7704.
+Df Residuals:                    1056   BIC:                             7764.
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const               11.6128      0.696     16.674      0.000      10.246      12.979
+oil_price_mom        1.8269      2.739      0.667      0.505      -3.547       7.201
+copper_price_mom    -0.1414      4.867     -0.029      0.977      -9.691       9.408
+rev_growth_cq        3.3191      0.611      5.434      0.000       2.120       4.518
+ebitda_growth_cq     0.2884      0.117      2.458      0.014       0.058       0.519
+roic_ltm           -12.1682      2.770     -4.393      0.000     -17.603      -6.734
+covid_dummy          3.7512      0.917      4.092      0.000       1.952       5.550
+dummy_XOM           -3.8151      0.943     -4.047      0.000      -5.665      -1.965
+dummy_CVX           -4.3366      0.943     -4.600      0.000      -6.187      -2.487
+dummy_EOG           -4.1705      0.950     -4.388      0.000      -6.035      -2.306
+dummy_BP            -2.1273      0.948     -2.243      0.025      -3.988      -0.266
+dummy_DVN          -10.7468      0.954    -11.264      0.000     -12.619      -8.875
+==============================================================================
+Omnibus:                      122.272   Durbin-Watson:                   1.756
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1052.678
+Skew:                          -0.014   Prob(JB):                    2.59e-229
+Kurtosis:                       7.864   Cond. No.                         43.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

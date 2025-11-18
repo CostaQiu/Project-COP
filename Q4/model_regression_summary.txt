@@ -1,0 +1,47 @@
+================================================================================
+SALES FORECASTING - OLS REGRESSION SUMMARY
+================================================================================
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  Sales   R-squared:                       0.922
+Model:                            OLS   Adj. R-squared:                  0.917
+Method:                 Least Squares   F-statistic:                     184.4
+Date:                Sun, 16 Nov 2025   Prob (F-statistic):           5.42e-26
+Time:                        12:22:06   Log-Likelihood:                -435.59
+No. Observations:                  51   AIC:                             879.2
+Df Residuals:                      47   BIC:                             886.9
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const       -838.6032    661.716     -1.267      0.211   -2169.804     492.598
+Sales_lag1     0.6816      0.080      8.513      0.000       0.520       0.843
+Sales_lag4    -0.1424      0.052     -2.726      0.009      -0.248      -0.037
+Oil_Q_avg     86.5569     15.153      5.712      0.000      56.073     117.041
+==============================================================================
+Omnibus:                        1.013   Durbin-Watson:                   1.458
+Prob(Omnibus):                  0.603   Jarque-Bera (JB):                0.792
+Skew:                           0.303   Prob(JB):                        0.673
+Kurtosis:                       2.919   Cond. No.                     6.24e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 6.24e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+================================================================================
+DIAGNOSTIC TESTS
+================================================================================
+
+1. Durbin-Watson: 1.4580
+2. Breusch-Pagan p-value: 0.1512
+3. Breusch-Godfrey p-value: 0.0962
+4. Jarque-Bera p-value: 0.6730
+
+5. Variance Inflation Factors:
+   Sales_lag1               :   27.323
+   Sales_lag4               :   11.439
+   Oil_Q_avg                :   23.803

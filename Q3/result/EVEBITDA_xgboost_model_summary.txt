@@ -1,0 +1,52 @@
+================================================================================
+XGBOOST MODEL SUMMARY: EVEBITDA
+================================================================================
+
+DATA SOURCE:
+----------------------------------------
+File: panel_data_all_variables.csv
+Training observations: 854
+Test observations: 214
+
+FEATURES (excluding oil/copper price levels):
+----------------------------------------
+- Oil price MoM change
+- Copper price MoM change
+- Revenue growth (quarterly)
+- EBITDA growth (quarterly)
+- ROIC (LTM)
+- COVID dummy (Mar 2020 - Dec 2021)
+- Company dummies (5 companies)
+
+TRAINING PERFORMANCE:
+----------------------------------------
+R-squared:  0.9122
+RMSE:       2.9908
+MAE:        1.8757
+
+TEST PERFORMANCE:
+----------------------------------------
+R-squared:  0.5428
+RMSE:       5.5327
+MAE:        3.1289
+
+COP-SPECIFIC PERFORMANCE (Test Set):
+----------------------------------------
+R-squared:  0.4586
+RMSE:       7.1993
+MAE:        2.8360
+
+FEATURE IMPORTANCE:
+----------------------------------------
+         Feature  Importance
+       dummy_DVN    0.166005
+     covid_dummy    0.154257
+        roic_ltm    0.113415
+   rev_growth_cq    0.096215
+       dummy_EOG    0.089520
+        dummy_BP    0.085754
+       dummy_XOM    0.079417
+ebitda_growth_cq    0.071193
+   oil_price_mom    0.051843
+       dummy_CVX    0.047061
+copper_price_mom    0.045320

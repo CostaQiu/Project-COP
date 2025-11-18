@@ -1,0 +1,52 @@
+================================================================================
+XGBOOST MODEL SUMMARY: PB
+================================================================================
+
+DATA SOURCE:
+----------------------------------------
+File: panel_data_all_variables.csv
+Training observations: 854
+Test observations: 214
+
+FEATURES (excluding oil/copper price levels):
+----------------------------------------
+- Oil price MoM change
+- Copper price MoM change
+- Revenue growth (quarterly)
+- EBITDA growth (quarterly)
+- ROIC (LTM)
+- COVID dummy (Mar 2020 - Dec 2021)
+- Company dummies (5 companies)
+
+TRAINING PERFORMANCE:
+----------------------------------------
+R-squared:  0.9145
+RMSE:       0.2248
+MAE:        0.1629
+
+TEST PERFORMANCE:
+----------------------------------------
+R-squared:  0.8363
+RMSE:       0.3100
+MAE:        0.2102
+
+COP-SPECIFIC PERFORMANCE (Test Set):
+----------------------------------------
+R-squared:  0.5667
+RMSE:       0.3867
+MAE:        0.2721
+
+FEATURE IMPORTANCE:
+----------------------------------------
+         Feature  Importance
+       dummy_EOG    0.427100
+        dummy_BP    0.186353
+       dummy_CVX    0.121846
+     covid_dummy    0.082245
+        roic_ltm    0.049466
+   rev_growth_cq    0.036284
+       dummy_DVN    0.025123
+       dummy_XOM    0.021730
+ebitda_growth_cq    0.020979
+   oil_price_mom    0.014567
+copper_price_mom    0.014306

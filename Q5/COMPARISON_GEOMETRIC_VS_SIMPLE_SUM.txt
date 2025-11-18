@@ -1,0 +1,165 @@
+================================================================================
+COMPARISON: GEOMETRIC vs SIMPLE SUM ANNUAL RETURN CALCULATIONS
+================================================================================
+
+CALCULATION METHODS:
+1. GEOMETRIC (Original):
+   Annual Return = (1 + r1) × (1 + r2) × ... × (1 + r52) - 1
+   (Accounts for compounding effect)
+
+2. SIMPLE SUM (Alternative):
+   Annual Return = r1 + r2 + ... + r52
+   (Linear addition, no compounding)
+
+Both methods use 10,000 bootstrap simulations with 52 weekly COP returns
+
+================================================================================
+RESULTS COMPARISON TABLE
+================================================================================
+
+STATISTIC                  GEOMETRIC METHOD      SIMPLE SUM METHOD
+                           (Original)            (Alternative)
+─────────────────────────────────────────────────────────────────────────────
+
+Mean Annual Return         31.91%                27.75%
+Median Annual Return       23.75%                27.63%
+Std Deviation              48.57%                36.01%
+
+Min Annual Return          -72.30%               -119.32%
+Max Annual Return          327.16%               154.02%
+
+Range (Max - Min)          399.46%               273.34%
+
+PERCENTILES:
+1st percentile            -47.64%                -56.71%
+5th percentile            -31.78%                -31.03%
+10th percentile           -22.77%                -18.94%
+25th percentile            -2.37%                 4.05%
+50th percentile (Median)   23.75%                27.63%
+75th percentile            58.46%                52.15%
+90th percentile            95.68%                74.00%
+95th percentile           126.13%                88.28%
+99th percentile           181.60%               110.72%
+
+================================================================================
+PROBABILITY ANALYSIS
+================================================================================
+
+QUESTION 5.2 PROBABILITIES:
+
+Metric                              GEOMETRIC          SIMPLE SUM
+────────────────────────────────────────────────────────────────────
+
+P(Annual Return > 100%)             9.15%              2.16%
+                                    (915 cases)        (216 cases)
+
+P(Annual Return < 0%)              27.26%             21.81%
+                                   (2,726 cases)      (2,181 cases)
+
+P(Annual Return < 50%)             70.32%             73.00%
+                                   (7,032 cases)      (7,300 cases)
+
+================================================================================
+KEY INSIGHTS & DIFFERENCES
+================================================================================
+
+1. MAGNITUDE OF RETURNS:
+   - Geometric method produces HIGHER average returns (31.91% vs 27.75%)
+   - Geometric compounds gains, creating multiplicative effect
+   - Simple sum is linear without compounding benefit
+
+2. VOLATILITY:
+   - Simple sum has LOWER volatility (36.01% vs 48.57%)
+   - Geometric method shows wider spread (higher standard deviation)
+   - This is because compounding amplifies both positive and negative outcomes
+
+3. TAIL BEHAVIOR:
+   - EXTREME LOSSES: Simple sum worse (-119.32% vs -72.30% minimum)
+   - EXTREME GAINS: Geometric method much better (327.16% vs 154.02%)
+   - Simple sum is more "bounded" due to linear nature
+
+4. DOWNSIDE RISK (P < 0%):
+   - Simple sum: 21.81% probability of loss (BETTER)
+   - Geometric: 27.26% probability of loss
+   - Simple sum model is more conservative
+
+5. UPSIDE OPPORTUNITY (P > 100%):
+   - Geometric: 9.15% probability of doubling+ (BETTER)
+   - Simple sum: 2.16% probability of doubling+
+   - Geometric method offers more upside potential
+
+6. MIDDLE GROUND (P < 50%):
+   - Similar probabilities: 73.00% (simple) vs 70.32% (geometric)
+   - Both show most scenarios result in < 50% annual return
+
+================================================================================
+DISTRIBUTION SHAPE
+================================================================================
+
+GEOMETRIC METHOD:
+- Right-skewed (mean > median: 31.91% > 23.75%)
+- Fat upper tail (outliers can be very large)
+- Better captures compound growth potential
+- More realistic for continuous compounding investments
+
+SIMPLE SUM METHOD:
+- More symmetric (mean ≈ median: 27.75% ≈ 27.63%)
+- Bounded distribution
+- Linear approximation only valid for small returns
+- Less realistic but simpler to understand
+
+================================================================================
+MATHEMATICAL REASONING
+================================================================================
+
+Why Geometric > Simple Sum for typical returns?
+
+For small returns r where |r| << 1:
+(1 + r1) × (1 + r2) ≈ 1 + r1 + r2 + r1×r2
+                     ≈ r1 + r2  (when r1×r2 is negligible)
+
+But when returns accumulate:
+52 positive returns create multiplicative gains in geometric method
+(e.g., 52 × 0.5% weekly: Geometric ≈ 29% vs Simple = 26%)
+
+However, extreme negative returns hurt more geometrically:
+For r < 0: (1 + r) is bounded by 0, but simple sum unbounded downward
+This creates the wider negative tail in simple sum
+
+================================================================================
+WHICH METHOD IS CORRECT?
+================================================================================
+
+GEOMETRIC METHOD (RECOMMENDED for most cases):
+✓ Properly accounts for compounding
+✓ More realistic for continuous investment growth
+✓ Widely accepted in finance (IRR, CAGR, etc.)
+✓ Matches actual investor experience if reinvesting
+
+SIMPLE SUM METHOD (Limited use cases):
+✓ Mathematically simpler
+✓ Good approximation for very small returns only
+✓ Useful for learning/teaching purposes
+✗ Underestimates gains, overestimates losses
+✗ Not realistic for actual portfolio returns
+
+CONCLUSION:
+For Question 5.2, the GEOMETRIC method is the theoretically correct approach
+as it properly models how investment returns compound over time.
+
+================================================================================
+OUTPUT FILES GENERATED
+================================================================================
+
+1. bootstrap_annual_returns.csv
+   - Currently contains SIMPLE SUM results (10,000 simulations)
+   - Columns: Simulation_Number, Annual_Return
+   - To revert to geometric: Uncomment geometric line, comment simple sum
+
+2. This comparison document
+   - Shows side-by-side analysis of both methods
+
+================================================================================
+
+
+

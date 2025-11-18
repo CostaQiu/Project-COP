@@ -1,0 +1,127 @@
+================================================================================
+QUESTION 5.2: BOOTSTRAP MONTE CARLO SIMULATION ANALYSIS
+Bootstrap Annual Return Estimation (Without Normality Assumption)
+================================================================================
+
+METHODOLOGY
+-----------
+1. Extracted 260 weekly returns from COP (historical data)
+2. Performed 10,000 Monte Carlo simulations
+3. Each simulation:
+   - Randomly selected 52 weekly returns WITH REPLACEMENT (bootstrap)
+   - Calculated annual return using geometric formula:
+     Annual Return = (1+r1) × (1+r2) × ... × (1+r52) - 1
+4. Analyzed distribution of 10,000 annual returns
+
+================================================================================
+INPUT DATA SUMMARY (COP Weekly Returns)
+================================================================================
+Number of observations:        260 weeks
+Mean weekly return:            0.5357% (0.005357)
+Standard deviation (weekly):   4.9684% (0.049684)
+Minimum weekly return:        -19.7638% (-0.197638)
+Maximum weekly return:         15.8003% (0.158003)
+
+Note: Using historical bootstrap instead of normal distribution assumption
+      (addressing the normality concern from Question 5.1)
+
+================================================================================
+MONTE CARLO SIMULATION RESULTS (10,000 iterations)
+================================================================================
+
+DESCRIPTIVE STATISTICS:
+  Mean Annual Return:         31.91%
+  Median Annual Return:       23.75%
+  Standard Deviation:         48.57%
+  Minimum Annual Return:     -72.30%
+  Maximum Annual Return:     327.16%
+
+PERCENTILE DISTRIBUTION:
+  1st percentile:    -47.64%
+  5th percentile:    -31.78%
+  10th percentile:   -22.77%
+  25th percentile:    -2.37%
+  50th percentile:    23.75% (Median)
+  75th percentile:    58.46%
+  90th percentile:    95.68%
+  95th percentile:   126.13%
+  99th percentile:   181.60%
+
+================================================================================
+KEY PROBABILITY FINDINGS (Answer to Question 5.2)
+================================================================================
+
+P(Annual Return > 100%):    9.15%   (915 out of 10,000)
+P(Annual Return < 0%):     27.26%   (2,726 out of 10,000)
+P(Annual Return < 50%):    70.32%   (7,032 out of 10,000)
+
+================================================================================
+COMPARISON: QUESTION 5.1 vs QUESTION 5.2
+================================================================================
+
+Question 5.1 (Normal Distribution Assumption):
+  - Assumes market returns follow normal distribution
+  - Uses parameters estimated from 5-year historical S&P 500 data
+  
+Question 5.2 (Bootstrap Approach):
+  - No normality assumption required
+  - Resamples directly from historical COP returns
+  - Preserves empirical distribution of actual returns
+  - Better captures tail behavior and non-normal features
+
+KEY DIFFERENCES IN RESULTS:
+  - Bootstrap approach likely shows different probabilities due to:
+    * Historical COP returns may have different mean/volatility than S&P 500
+    * Bootstrap captures actual fat tails and skewness
+    * No assumption of symmetry (unlike normal distribution)
+
+================================================================================
+OUTPUT FILES
+================================================================================
+
+1. bootstrap_annual_returns.csv
+   - Contains 10,001 rows (header + 10,000 simulations)
+   - Columns: Simulation_Number, Annual_Return
+   - Each annual return represents one Monte Carlo iteration
+   - Can be used for further analysis, visualization, or backtesting
+
+================================================================================
+INTERPRETATION
+================================================================================
+
+The bootstrap analysis shows:
+
+1. CENTRAL TENDENCY:
+   Mean annual return of 31.91% suggests positive expected returns from COP
+   However, median of 23.75% indicates right skew (positive outliers)
+
+2. DOWNSIDE RISK:
+   27.26% probability of negative returns signals significant downside risk
+   This is substantial and should not be overlooked
+
+3. UPSIDE POTENTIAL:
+   Only 9.15% probability of doubling money (>100% return)
+   70.32% of scenarios result in <50% annual return
+
+4. VOLATILITY:
+   48.57% standard deviation indicates high variability
+   Wide range from -72.30% to +327.16% shows diverse outcomes
+
+5. RISK-RETURN PROFILE:
+   For an initial $100,000 investment:
+   - Expected value after 1 year: ~$131,913
+   - But with high uncertainty and 27.26% chance of loss
+   - Could range from -$72,300 (loss) to +$327,156 (gain)
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The bootstrap Monte Carlo simulation provides a data-driven approach to
+investment analysis that doesn't rely on normality assumptions. The results
+suggest moderate positive expected returns for COP but with substantial
+volatility and downside risk. Investors should consider their risk tolerance
+and time horizon when evaluating such outcomes.
+
+================================================================================
+

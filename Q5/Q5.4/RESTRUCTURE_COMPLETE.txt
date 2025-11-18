@@ -1,0 +1,250 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                      DATA RESTRUCTURING - COMPLETE ✓                           ║
+║                                                                                ║
+║              Excel file restructured (Wide Form Layout)                        ║
+║              Bootstrap file updated with Risk Metrics                          ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+TASK 1: EXCEL FILE RESTRUCTURING ✓ COMPLETE
+═══════════════════════════════════════════════════════════════════════════════════
+
+File: Q5.4 Combined Data.xlsx
+
+NEW SHEET STRUCTURE:
+
+1. "Returns_Wide_Form" (MAIN - 4 columns side-by-side)
+   ├── Strategy_A_Return (%)
+   ├── Strategy_B_Return (%)
+   ├── Strategy_C_Return (%)
+   └── Strategy_D_Return (%)
+   
+   Structure: 10,000 rows × 4 columns (Annual Returns only)
+   Each row = one simulation with all 4 strategies visible side-by-side
+   Perfect for comparison!
+
+2. "All_Data_Wide" (Complete data with Final Values)
+   ├── Simulation
+   ├── A_Final_Value
+   ├── A_Return_%
+   ├── B_Final_Value
+   ├── B_Return_%
+   ├── C_Final_Value
+   ├── C_Return_%
+   ├── D_Final_Value
+   └── D_Return_%
+   
+   Structure: 10,000 rows × 9 columns
+   Contains both final values and returns for each strategy
+
+3. "Strategy_A/B/C/D" (Individual strategy data)
+   ├── Simulation
+   ├── Final_Value
+   └── Annual_Return
+   
+   Structure: 10,000 rows × 3 columns each
+   Original detailed data for each strategy
+
+4. "Summary" (Statistics with NEW Risk Metrics)
+   ├── Strategy
+   ├── Mean_Final_Value
+   ├── Median_Final_Value
+   ├── Std_Dev
+   ├── Min_Value
+   ├── Max_Value
+   ├── Mean_Return_%
+   ├── P_Loss_%
+   ├── P_Gain_50_%
+   ├── VaR_5%  ← NEW
+   └── Estimated_Shortfall_5%  ← NEW
+   
+   Structure: 4 rows (one per strategy) × 11 columns
+
+
+TASK 2: BOOTSTRAP FILE UPDATED ✓ COMPLETE
+═══════════════════════════════════════════════════════════════════════════════════
+
+File: Q5/bootstrap_annual_returns.csv
+
+ADDED RISK METRICS:
+   • VaR 5%: -31.78% (Value at Risk at 5th percentile)
+   • Estimated Shortfall 5%: -41.40% (Conditional VaR - average loss in worst 5%)
+
+STRUCTURE (Updated):
+   Original rows: 1-10,000 (bootstrap simulations)
+   New rows: 10,001-10,002 (summary metrics)
+   
+   Row 10,001: VaR_5%, -0.3177784142148979
+   Row 10,002: Estimated_Shortfall_5%, -0.4140289903359322
+
+INTERPRETATION:
+   • VaR 5%: In the worst 5% of scenarios, returns fall to -31.78%
+   • Estimated Shortfall: When returns are in worst 5%, average is -41.40%
+   • This means maximum expected loss in worst case is about -41.40%
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+EXCEL FILE LAYOUT EXAMPLES
+═══════════════════════════════════════════════════════════════════════════════════
+
+RETURNS_WIDE_FORM SHEET (Main - 4 columns side-by-side):
+
+Simulation  Strategy_A_Return  Strategy_B_Return  Strategy_C_Return  Strategy_D_Return
+1           26.67%             114.97%            73.92%             73.92%
+2           3.41%              -71.77%            1.51%              1.51%
+3           42.15%             159.77%            85.94%             85.94%
+4           14.13%             42.36%             23.51%             23.51%
+...
+10000       26.08%             160.84%            76.08%             76.08%
+
+Use this sheet to:
+- Compare all 4 strategies in one row
+- See how each simulation performed across all strategies
+- Easy to calculate correlations, differences, etc.
+
+
+ALL_DATA_WIDE SHEET (Complete data):
+
+Simulation  A_Final  A_Return  B_Final  B_Return  C_Final  C_Return  D_Final  D_Return
+1           126,671  26.67%    214,970  114.97%   173,924  73.92%    173,924  73.92%
+2           103,374  3.41%     28,233   -71.77%   101,505  1.51%     101,505  1.51%
+3           142,160  42.15%    259,770  159.77%   185,945  85.94%    185,945  85.94%
+...
+
+Use this sheet to:
+- See both final portfolio values and returns
+- Analyze final outcomes vs returns
+- Calculate value changes
+
+
+SUMMARY SHEET (Statistics):
+
+Strategy      Mean_Final  Median_Final  Std_Dev   Mean_Return  VaR_5%   Est_Shortfall_5%
+A: All SPX    116,293     114,745       19,113    16.29%       87,993   82,030
+B: All COP    131,457     123,484       48,367    31.46%       68,734   60,071
+C: 50/50      123,936     121,770       24,695    23.94%       87,265   80,117
+D: Rebalance  112,607     110,360       17,362    12.61%       89,132   84,981
+
+Use this sheet to:
+- Compare statistics across strategies
+- Risk analysis with VaR and Shortfall
+- Report generation
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+RISK METRICS EXPLANATION
+═══════════════════════════════════════════════════════════════════════════════════
+
+VALUE AT RISK (VaR 5%):
+  • The portfolio value at the 5th percentile
+  • Worst case scenario with 95% confidence
+  • Example: VaR 5% = $87,993 means in 95% of simulations, portfolio >= $87,993
+  • Shows downside protection threshold
+
+ESTIMATED SHORTFALL (Conditional VaR at 5%):
+  • Average portfolio value in the worst 5% of scenarios
+  • Also called Expected Shortfall or CVaR
+  • More conservative than VaR (accounts for tail risk)
+  • Example: Est. Shortfall 5% = $82,030 means in worst 5%, average = $82,030
+  • Shows true expected loss in worst-case scenarios
+
+INTERPRETATION FOR Q5.2 BOOTSTRAP:
+  • VaR 5%: -31.78% means in worst 5%, returns fall to at least -31.78%
+  • Est. Shortfall: -41.40% means in worst 5%, average return is -41.40%
+  • Investor has 95% confidence returns won't be worse than -31.78%
+  • But should prepare for average of -41.40% in truly bad scenarios
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+HOW TO USE THE RESTRUCTURED EXCEL FILE
+═══════════════════════════════════════════════════════════════════════════════════
+
+USE RETURNS_WIDE_FORM FOR:
+  • Quick comparison of strategies
+  • Filtering/sorting to see which simulation favored which strategy
+  • Calculating strategy differences: =A2-B2 (A vs B)
+  • Creating visualizations comparing all 4
+  • Export to Python/R for further analysis
+
+Example Excel formulas:
+  • =AVERAGE(A:A) → Average return for Strategy A
+  • =PERCENTILE(A:A,0.05) → 5th percentile (VaR)
+  • =COUNTIF(A:A,"<0") → Count negative returns
+  • =A2-C2 → Compare Strategy A vs C
+
+USE SUMMARY SHEET FOR:
+  • Statistics table for reports
+  • Risk analysis with VaR and Shortfall
+  • Decision-making dashboard
+  • Presentation slides
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+Q5.2 BOOTSTRAP FILE UPDATES
+═══════════════════════════════════════════════════════════════════════════════════
+
+File: Q5/bootstrap_annual_returns.csv
+
+New content at end of file:
+
+Row 10,001: VaR_5%,-0.3177784142148979
+Row 10,002: Estimated_Shortfall_5%,-0.4140289903359322
+
+Usage in Python/R:
+  df = pd.read_csv('bootstrap_annual_returns.csv')
+  var_5 = float(df[df['Simulation_Number']=='VaR_5%']['Annual_Return'].values[0])
+  shortfall = float(df[df['Simulation_Number']=='Estimated_Shortfall_5%']['Annual_Return'].values[0])
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+FINAL FILE STRUCTURE (Q5.4 Folder)
+═══════════════════════════════════════════════════════════════════════════════════
+
+Q5.4/ (8 files total - CLEAN)
+
+Documentation (2 files):
+  • READ_ME_FIRST.txt (Quick start guide)
+  • COMPLETE_ANALYSIS.txt (Full documentation)
+
+Verification (1 file):
+  • STRATEGY_D_VERIFICATION.txt (Strategy D verification)
+
+Data (1 file):
+  • Q5.4 Combined Data.xlsx (Master Excel - restructured!)
+    - Returns_Wide_Form (4 columns side-by-side)
+    - All_Data_Wide (complete data)
+    - Strategy_A/B/C/D (individual data)
+    - Summary (statistics with VaR & Shortfall)
+
+Visualizations (4 PNG files):
+  • Risk_Return_Profile.png
+  • Distribution_Comparison.png
+  • BoxPlot_Comparison.png
+  • Cumulative_Distribution.png
+  (Additional PNGs optional)
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+STATUS: COMPLETE
+═══════════════════════════════════════════════════════════════════════════════════
+
+Task 1: Excel restructured to wide form (4 columns side-by-side)
+        ✓ Returns_Wide_Form sheet created
+        ✓ All_Data_Wide sheet created
+        ✓ Individual strategy sheets preserved
+        ✓ Summary sheet with VaR & Shortfall added
+
+Task 2: Bootstrap file updated with risk metrics
+        ✓ VaR 5% calculated: -31.78%
+        ✓ Estimated Shortfall 5% calculated: -41.40%
+        ✓ Metrics appended to CSV
+
+Utility files cleaned up (deleted)
+
+Ready for use!
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+
+

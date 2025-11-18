@@ -1,0 +1,303 @@
+================================================================================
+SALES FORECASTING ANALYSIS - FINAL SUMMARY
+================================================================================
+Date: November 16, 2025
+Model: OLS Regression with Quarterly Dummies
+Data Period: 2012 Q1 - 2025 Q3 (55 observations after lags)
+
+================================================================================
+MODEL SPECIFICATION
+================================================================================
+
+Features (7 total):
+  1. Sales_lag1 - Previous quarter sales (autoregressive)
+  2. Sales_lag4 - 4 quarters ago (year-over-year seasonal effect)
+  3. Oil_Q_avg - Average oil price in current quarter
+  4. ROIC_LTM_lag4 - Return on Invested Capital 1 year ago  
+  5. Q2 - Quarterly dummy (Q2 = 1, else 0)
+  6. Q3 - Quarterly dummy (Q3 = 1, else 0)
+  7. Q4 - Quarterly dummy (Q4 = 1, else 0) [Q1 is reference]
+
+Data Filtering:
+  - Original data: 2009 Q4 - 2025 Q3 (64 observations)
+  - Filtered to: 2011 Q1 onwards (59 observations before lags)
+  - After creating lags: 55 observations for modeling
+  - Rationale: Pre-2011 data contained upstream sales (much larger values)
+
+================================================================================
+REGRESSION RESULTS
+================================================================================
+
+Sample Sizes:
+  - Training set: 51 observations (2012 Q1 - 2024 Q3)
+  - Test set: 4 observations (2024 Q4 - 2025 Q3)
+  - Feature/Observation ratio: 7/51 = 0.137 (acceptable)
+
+Model Fit:
+  - R-squared: 0.932 (93.2% of variance explained)
+  - Adjusted R-squared: 0.921
+  - F-statistic: 84.34 (p < 0.001) **HIGHLY SIGNIFICANT**
+  - AIC: 879.9
+  - BIC: 895.3
+
+Coefficients:
+  Variable              Coefficient    Std Error    t-stat    p-value    95% CI
+  ─────────────────────────────────────────────────────────────────────────
+  Constant              -834.21       760.87       -1.10     0.279   [-2369, 700]
+  Sales_lag1 ***         0.674        0.079         8.53     0.000   [0.515, 0.833]
+  Sales_lag4 *          -0.172        0.077        -2.25     0.029   [-0.327, -0.018]
+  Oil_Q_avg ***         92.12         15.42         5.98     0.000   [61.03, 123.21]
+  ROIC_LTM_lag4        1354.63        3273.76       0.41     0.681   [-5248, 7957]
+  Q2                  -715.96         496.04       -1.44     0.156   [-1716, 284]
+  Q3                   115.17         497.83        0.23     0.818   [-889, 1119]
+  Q4                   561.23         504.05        1.11     0.272   [-455, 1578]
+
+*** p < 0.01, ** p < 0.05, * p < 0.1
+
+SIGNIFICANT FEATURES (p < 0.05):
+  • Sales_lag1 (p < 0.001): Strong autoregressive effect - 67% of previous sales
+  • Sales_lag4 (p = 0.029): Weak year-over-year effect - 17% reduction
+  • Oil_Q_avg (p < 0.001): $92/barrel increases sales by ~$92,000 per unit
+
+NON-SIGNIFICANT:
+  • ROIC_LTM_lag4 (p = 0.681): Company profitability not predictive of sales
+  • Q2, Q3, Q4 dummies (p > 0.10): No strong seasonal effects detected
+
+================================================================================
+DIAGNOSTIC TESTS
+================================================================================
+
+1. Autocorrelation (Durbin-Watson)
+   Statistic: 1.376
+   ⚠️ POSITIVE AUTOCORRELATION DETECTED
+   Note: DW < 2, suggesting positive correlation in residuals
+
+2. Heteroscedasticity (Breusch-Pagan)
+   LM Statistic: 10.90, p-value: 0.143
+   ✓ HOMOSCEDASTIC (constant variance in residuals)
+
+3. Serial Correlation (Breusch-Godfrey, 2 lags)
+   LM Statistic: 7.14, p-value: 0.028
+   ⚠️ SERIAL CORRELATION DETECTED
+   Suggests residuals may have temporal patterns
+
+4. Normality (Jarque-Bera)
+   JB Statistic: 1.31, p-value: 0.519
+   ✓ RESIDUALS ARE NORMAL (can trust confidence intervals)
+
+5. Multicollinearity (Variance Inflation Factors)
+   Sales_lag1:      28.66  ⚠️ HIGH
+   Sales_lag4:      23.17  ⚠️ HIGH
+   Oil_Q_avg:       34.18  ⚠️ HIGH
+   ROIC_LTM_lag4:    2.87  ✓ OK
+   Q2:               1.82  ✓ OK
+   Q3:               1.87  ✓ OK
+   Q4:               1.68  ✓ OK
+   
+   Note: High VIFs for lag variables expected due to autocorrelation in sales
+         Dummies have reasonable VIFs indicating independence
+
+================================================================================
+MODEL PERFORMANCE
+================================================================================
+
+IN-SAMPLE (Training Set):
+  - R²:    0.9321
+  - RMSE:  1,153.47
+  - MAE:   870.08
+
+OUT-OF-SAMPLE (Test Set):
+  - R²:    -5.41 (negative: model underperforms simple mean)
+  - RMSE:  2,514.48
+  - MAE:   2,337.46
+  - MAPE:  14.95%
+
+Test Period Forecast Accuracy:
+  Quarter          Actual    Forecast    Error      Error %
+  ─────────────────────────────────────────────────────────
+  2024 Q4          14,676    12,728      +1,948    +13.3%
+  2025 Q1          16,909    13,276      +3,633    +21.5%
+  2025 Q2          14,319    13,208      +1,111     +7.8%
+  2025 Q3          15,376    12,719      +2,657    +17.3%
+  
+  Average Error:  +15.0%
+  Average Abs Error: 15.0%
+
+Interpretation:
+  • Model consistently UNDERESTIMATES recent sales by ~15%
+  • Possible causes: Structural break in 2024+, data quality issues,
+    missing explanatory variables
+  • Suggests retraining with more recent data could improve performance
+
+================================================================================
+FORECASTS FOR 2025 Q4 AND 2026 Q1
+================================================================================
+
+2025 Q4 (Q4 QUARTER):
+  Point Forecast:  13,651
+  95% CI:          [12,669 - 14,632]
+  CI Width:        1,963 (14.4% of forecast)
+
+2026 Q1 (Q1 QUARTER - Reference):
+  Point Forecast:  11,547
+  95% CI:          [10,548 - 12,546]
+  CI Width:        1,997 (17.3% of forecast)
+
+INTERPRETATION OF CONFIDENCE INTERVALS:
+  • CI widths of ~2,000 units represent significant forecast uncertainty
+  • Reflects:
+    - Autocorrelation in residuals
+    - Serial correlation detected
+    - Limited out-of-sample test period (only 4 quarters)
+  • Recommend using CI bounds for scenario planning (best-case/worst-case)
+
+Q4 2025 is forecasted higher than Q1 2026, consistent with:
+  - Autoregressive pattern from recent (higher) Q3 2025 sales
+  - Q4 seasonal dummy effect (-830 Q2, +115 Q3, +561 Q4)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. STRONG AUTOREGRESSIVE COMPONENT
+   • Previous quarter's sales explain 67% of current sales
+   • Sales follow stable, predictable patterns quarter-to-quarter
+   • Year-over-year effects are weak but significant
+
+2. OIL PRICE IMPORTANCE  
+   • Strong, significant relationship with sales ($92/barrel effect)
+   • Model likely captures commodity price exposure
+   • Useful leading indicator for sales forecasting
+
+3. WEAK QUARTERLY SEASONALITY
+   • Seasonal dummies not statistically significant (p > 0.10)
+   • Q4 has slight positive effect (+$561k) but not significant
+   • Business may not have strong seasonal patterns
+
+4. PROFITABILITY NOT PREDICTIVE
+   • ROIC_LTM_lag4 coefficient not significant
+   • Company's past profitability doesn't predict sales
+   • Sales and profitability may move independently
+
+5. OUT-OF-SAMPLE UNDERPERFORMANCE
+   • Models consistently underforecast recent quarters
+   • Suggests change in underlying sales dynamics
+   • 2024-2025 may represent structural break or regime change
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+FOR FORECASTING:
+  1. Use point forecasts with caution - apply 15% upward adjustment
+  2. Plan based on confidence interval bounds, not point estimates
+  3. Update model quarterly with new data
+  4. Monitor forecast errors - retrain if MAPE exceeds 20%
+
+FOR MODEL IMPROVEMENT:
+  1. Address autocorrelation:
+     - Use Newey-West robust standard errors
+     - Consider ARIMA or other time-series models
+  2. Investigate structural break:
+     - Dummy variables for 2024+ period
+     - Use shorter training window (e.g., last 8 years)
+  3. Add additional predictors:
+     - Industry-specific leading indicators
+     - Company-specific operational metrics
+  4. Test alternative specifications:
+     - Log-log model for elasticities
+     - First-differences to remove trend
+     - Rolling window forecasts
+
+FOR BUSINESS:
+  1. Create scenario analysis:
+     - Base case: Point forecast
+     - Upside: CI upper bound + 15% adjustment
+     - Downside: CI lower bound
+  2. Establish early warning system:
+     - Monitor Oil_Q_avg monthly
+     - Flag if sales significantly miss forecast
+  3. Consider forecast combination:
+     - Blend with analyst forecasts
+     - Use average of multiple models
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+Core Outputs:
+  • sales_forecast_results.csv - Forecasts with 95% CIs (6 rows: 2024Q4-2026Q1)
+  • sales_modeling_data.csv - Clean dataset (55 obs × 13 columns)
+  • model_regression_summary.txt - Full OLS regression output
+  • sales_forecast_analysis.png - 7-panel diagnostic visualization
+
+Documentation:
+  • ANALYSIS_SUMMARY.txt - This file
+  • sales_forecast_final.py - Python script for reproducibility
+
+All files are located in: Q4/
+
+================================================================================
+METHODOLOGY NOTES
+================================================================================
+
+Data Processing:
+  • Raw data sourced from Q4.csv with mixed frequency data
+  • Quarterly sales and financial data aligned with monthly oil prices
+  • Oil prices aggregated to quarterly averages
+  • Data filtered to 2011 Q1+ to exclude upstream sales period
+  • Lag structures respect information availability timing
+
+Model Estimation:
+  • OLS regression with 7 features
+  • Standardized features? No (raw coefficients)
+  • Missing data handling: Listwise deletion for lags
+  • Prediction intervals: 95% confidence level
+
+Out-of-Sample Testing:
+  • 4 most recent quarters held out for validation
+  • No walk-forward cross-validation performed
+  • Test set performance reported as R², RMSE, MAE, MAPE
+
+Forecasting Approach:
+  • Point forecasts from fitted OLS model
+  • Confidence intervals from statsmodels get_prediction()
+  • Uses t-distribution with df = n - k - 1 = 43
+  • Assumes constant variance (homoscedasticity)
+
+================================================================================
+LIMITATIONS
+================================================================================
+
+1. Small sample size (51 training observations)
+   - Limited degrees of freedom
+   - Unstable coefficient estimates
+   - Wide confidence intervals
+
+2. Positive autocorrelation in residuals
+   - Standard errors may be biased downward
+   - True significance overstated
+   - Violates OLS assumption
+
+3. Serial correlation detected (BG test)
+   - Suggests dynamic model might be better
+   - ARIMA or VAR models may perform better
+
+4. High multicollinearity among lagged sales
+   - VIF > 10 for Sales_lag1, Sales_lag4, Oil_Q_avg
+   - Coefficient estimates unstable
+   - Standard errors inflated
+
+5. Structural break in recent data
+   - Model consistently underforecasts 2024-2025
+   - Suggests regime change or missing variables
+
+6. Negative out-of-sample R²
+   - Model performs worse than predicting mean
+   - Not suitable for standalone forecasting
+   - Should be combined with other methods
+
+================================================================================
+END OF SUMMARY
+================================================================================
+

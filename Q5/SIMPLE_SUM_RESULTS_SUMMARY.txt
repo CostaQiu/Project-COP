@@ -1,0 +1,215 @@
+================================================================================
+QUESTION 5.2 - SIMPLE SUM METHOD RESULTS
+Bootstrap Monte Carlo Simulation (10,000 iterations)
+================================================================================
+
+CALCULATION METHOD: SIMPLE SUM (Alternative to Geometric)
+Annual Return = r1 + r2 + ... + r52
+
+This method sums weekly returns directly without compounding.
+
+================================================================================
+DATA SOURCE
+================================================================================
+
+Input:          260 historical weekly COP returns
+Weekly Returns: Mean = 0.5357%, Std Dev = 4.9684%
+Bootstrap Size: 52 weeks (with replacement)
+Simulations:    10,000 iterations
+
+================================================================================
+DISTRIBUTION STATISTICS
+================================================================================
+
+Count:               10,000
+Mean Annual Return:  27.75% (0.277530)
+Median:              27.63% (0.276317)
+Std Deviation:       36.01% (0.360080)
+Min Annual Return:  -119.32% (-1.193229)
+Max Annual Return:   154.02% (1.540187)
+Range:               273.34%
+
+Skewness:           -0.0266 (Nearly symmetric)
+Kurtosis:           -0.0059 (Normal tail behavior)
+
+================================================================================
+PERCENTILE DISTRIBUTION
+================================================================================
+
+  1th percentile:  -56.71%
+  5th percentile:  -31.03%
+ 10th percentile:  -18.94%
+ 25th percentile:    4.05%
+ 50th percentile:   27.63% (Median)
+ 75th percentile:   52.15%
+ 90th percentile:   74.00%
+ 95th percentile:   88.28%
+ 99th percentile:  110.72%
+
+================================================================================
+PROBABILITY ANALYSIS - ANSWER TO QUESTION 5.2
+================================================================================
+
+Three Key Probabilities (SIMPLE SUM METHOD):
+
+1. P(Annual Return > 100%):  2.16%   (216 out of 10,000 simulations)
+   - Only 2.16% chance of doubling your money
+   - Much lower than geometric method (9.15%)
+   
+2. P(Annual Return < 0%):   21.81%   (2,181 out of 10,000 simulations)
+   - About 1 in 5 chance of losing money
+   - Lower than geometric method (27.26%)
+   
+3. P(Annual Return < 50%):  73.00%   (7,300 out of 10,000 simulations)
+   - About 73% of outcomes produce less than 50% return
+   - Similar to geometric method (70.32%)
+
+================================================================================
+SAMPLE RESULTS FROM CSV FILE
+================================================================================
+
+First 15 Bootstrap Simulations (from bootstrap_annual_returns.csv):
+
+Simulation  Annual Return
+    1         107.68%
+    2          27.07%
+    3          67.10%
+    4          93.51%
+    5          38.87%
+    6          60.01%
+    7          -2.36%
+    8          67.22%
+    9          98.72%
+   10          20.51%
+   11          40.03%
+   12          73.47%
+   13          16.02%
+   14           8.72%
+   15         -18.99%
+
+Note: CSV file contains all 10,000 simulations for analysis
+
+================================================================================
+COMPARISON TABLE: GEOMETRIC vs SIMPLE SUM
+================================================================================
+
+                          GEOMETRIC        SIMPLE SUM
+                          (Original)       (Alternative)
+────────────────────────────────────────────────────────
+P(Return > 100%)           9.15%            2.16%
+P(Return < 0%)            27.26%           21.81%
+P(Return < 50%)           70.32%           73.00%
+
+Mean Return               31.91%           27.75%
+Median Return             23.75%           27.63%
+Std Deviation             48.57%           36.01%
+
+Min Return               -72.30%          -119.32%
+Max Return               327.16%           154.02%
+
+────────────────────────────────────────────────────────
+
+KEY DIFFERENCES:
+
+1. Upside Potential:
+   - Geometric offers 9.15% chance of >100% return
+   - Simple sum offers only 2.16% chance
+   - Geometric creates compounding gains
+
+2. Downside Risk:
+   - Simple sum shows worse minimum (-119% vs -72%)
+   - But fewer scenarios with negative returns (21.81% vs 27.26%)
+
+3. Volatility:
+   - Simple sum has lower volatility (36.01% vs 48.57%)
+   - More stable/predictable outcomes
+
+4. Central Tendency:
+   - Mean similar (31.91% vs 27.75%)
+   - But geometric skewed right (mean > median)
+   - Simple sum symmetric (mean ≈ median)
+
+================================================================================
+INTERPRETATION
+================================================================================
+
+With Simple Sum Method ($100,000 initial investment):
+
+EXPECTED VALUE:
+- Mean expected return: 27.75%
+- Expected portfolio value: $127,753
+
+RANGE OF OUTCOMES:
+- Best case: +154% → $254,019
+- Worst case: -119% → -$119,323 (exceeds initial investment!)
+- Most likely range: -31% to +88%
+
+RISK ASSESSMENT:
+- 21.81% probability of loss (still significant)
+- 73% of cases produce <50% return
+- Only 2.16% chance of doubling+ investment
+
+COMPARISON TO GEOMETRIC:
+- Simple sum is MORE CONSERVATIVE in upside
+- Simple sum is SLIGHTLY BETTER on avoiding losses
+- Simple sum has LOWER volatility overall
+
+================================================================================
+MATHEMATICAL NOTE
+================================================================================
+
+Why Simple Sum < Geometric for typical scenarios:
+
+For positive weekly returns:
+- Geometric: (1.005)^52 ≈ 1.319 = 31.9% annual return
+- Simple: 52 × 0.005 = 0.26 = 26.0% annual return
+
+Compounding effect = Geometric - Simple ≈ 5.9%
+
+This explains why geometric method consistently shows higher average returns.
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+1. bootstrap_annual_returns.csv
+   - Contains 10,000 bootstrap annual returns (SIMPLE SUM method)
+   - Format: Simulation_Number, Annual_Return
+   - Ready for further analysis or visualization
+
+2. q5_2_bootstrap_simulation.py (with commented geometric method)
+   - Original geometric calculation: COMMENTED OUT
+   - Current calculation: SIMPLE SUM (active)
+   - Easily switch between methods by commenting/uncommenting
+
+3. COMPARISON_GEOMETRIC_VS_SIMPLE_SUM.txt
+   - Detailed comparison of both methods
+
+4. This summary document
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The simple sum method provides a linear approximation to annual returns
+without accounting for compounding effects. Results show:
+
+ANSWER TO Q5.2 (Simple Sum Method):
+- P(Return > 100%) = 2.16%
+- P(Return < 0%)   = 21.81%
+- P(Return < 50%)  = 73.00%
+
+RECOMMENDATION:
+For proper financial analysis, use the GEOMETRIC method as it correctly
+models how investments actually compound. The simple sum method is provided
+for comparison purposes only.
+
+To switch back to geometric method in the Python script:
+1. Comment out the "annual_return = np.sum(sampled_returns)" line
+2. Uncomment the "annual_return = np.prod(1 + sampled_returns) - 1" line
+3. Re-run the script
+
+================================================================================
+
+
+
