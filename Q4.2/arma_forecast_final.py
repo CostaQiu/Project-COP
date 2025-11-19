@@ -82,7 +82,7 @@ print(f"  Result: {'Stationary' if adf_result[1] < 0.05 else 'Non-stationary'}")
 # ============================================================================
 print("\n[Step 3] Generating ACF/PACF diagnostic plots...")
 
-fig, axes = plt.subplots(2, 2, figsize=(16, 10))
+fig, axes = plt.subplots(3, 2, figsize=(16, 15))
 
 nlags = min(20, len(y) // 2 - 1)
 
@@ -98,6 +98,13 @@ plot_acf(y_diff1, lags=nlags, ax=axes[1, 0], title='ACF - First Difference (d=1)
 axes[1, 0].set_xlabel('Lag')
 plot_pacf(y_diff1, lags=nlags, ax=axes[1, 1], title='PACF - First Difference (d=1)', method='ywmle')
 axes[1, 1].set_xlabel('Lag')
+
+# Second difference
+y_diff2 = np.diff(y_diff1)
+plot_acf(y_diff2, lags=nlags, ax=axes[2, 0], title='ACF - Second Difference (d=2)')
+axes[2, 0].set_xlabel('Lag')
+plot_pacf(y_diff2, lags=nlags, ax=axes[2, 1], title='PACF - Second Difference (d=2)', method='ywmle')
+axes[2, 1].set_xlabel('Lag')
 
 plt.tight_layout()
 plt.savefig('acf_pacf_analysis.png', dpi=300, bbox_inches='tight')
