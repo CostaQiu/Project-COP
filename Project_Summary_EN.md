@@ -76,6 +76,8 @@ All quarterly financial data (revenue, EBITDA, book value) are forward-filled fr
 - ✓ Better interpretability
 - ✓ Lower prediction errors
 
+![P/B Ratio Time Series](Q3/result/PB_time_series.png)
+
 #### 2. COVID-19 Impact (Measured via Dummy Variable)
 
 - **EV/EBITDA**: +3.92*** (p<0.001) 
@@ -107,6 +109,8 @@ Top 3 features for P/B predictions:
 3. **dummy_CVX** (12.2%) - Chevron positioning
 
 Company-specific heterogeneity dominates over macro factors
+
+![XGBoost Feature Importance](Q3/result/PB_xgboost_visualization.png)
 
 ### Econometric Rigor
 - Multicollinearity: VIF < 10 ✓
@@ -152,6 +156,8 @@ The OLS approach emphasizes economic interpretability and scenario analysis capa
 - **Out-of-sample**: RMSE 2,750, MAPE **16.24%**
 - **Systematic bias**: Model underestimates by ~15% (suggests 2024+ structural change)
 
+![OLS Sales Forecast Analysis](Q4/sales_forecast_analysis.png)
+
 #### Diagnostic Tests
 
 | Test | Result | Implication |
@@ -170,6 +176,8 @@ The Box-Jenkins methodology represents the classical approach to univariate time
 
 **Step 1 - Stationarity Assessment and Integration Order Determination**:
 The Augmented Dickey-Fuller (ADF) test applied to the raw sales series yields a p-value of 0.285, strongly indicating the presence of at least one unit root (non-stationarity). Visual inspection of ACF/PACF patterns confirms slow ACF decay characteristic of differencing requirement. Application of first-order differencing (d=1) reduces but does not eliminate autocorrelation structure in ACF plots. This residual pattern suggests the presence of a trend component beyond simple drift, necessitating second-order differencing (d=2). Following d=2 transformation, both ADF testing and visual inspection confirm stationarity, validating the I(2) specification.
+
+![ACF/PACF Analysis](Q4.2/acf_pacf_analysis.png)
 
 **Step 2 - Systematic Model Identification**:
 Rather than relying on informal ACF/PACF interpretation, comprehensive grid search across 108 candidate models (p∈[0,5], d∈[0,2], q∈[0,5]) systematically evaluates all reasonable specifications. The Akaike Information Criterion (AIC)—which balances model fit against parsimony by penalizing additional parameters—serves as the selection criterion. This objective, data-driven approach eliminates subjective judgment about visual ACF/PACF patterns.
@@ -201,6 +209,8 @@ Where: B is the backward shift operator, φ₁ represents the autoregressive coe
 **Diagnostic Validation**:
 - Ljung-Box test p = 0.92 ✓ (no residual autocorr.)
 - ADF on residuals ✓ (stationary)
+
+![ARIMA Forecast Analysis](Q4.2/arma_forecast_analysis.png)
 
 ### OLS vs ARIMA Comparison
 
@@ -328,6 +338,8 @@ All strategies apply identical bootstrap simulation methodology with 10,000 tria
 **Strategy Implementation Details**:
 Each strategy simulation proceeds sequentially through 52 weeks, compounding weekly returns according to specified allocations. Strategy A maintains fixed 100% allocation to S&P 500 index. Strategy B maintains 100% allocation to ConocoPhillips equity. Strategy C maintains fixed 50/50 split between COP and SPX with no adjustment throughout the year. Strategy D implements systematic rebalancing across 12 monthly decision points, with allocation adjustments triggered by lagged performance signals: if prior month's market return was negative, move entirely to cash; if COP outperformed market, shift 10 percentage points from market to COP; if market outperformed COP, shift 10 percentage points from COP to market. This complex decision structure allows testing whether active management complexity generates superior risk-adjusted returns.
 
+![Portfolio Risk-Return Profile](Q5/Q5.4/Risk_Return_Profile.png)
+
 ##### Strategy A: 100% S&P 500
 - **Return**: 16.29% | **Risk**: 19.12% | **Sharpe**: 0.8002
 - **Loss Prob**: 19.91%
@@ -353,6 +365,8 @@ Each strategy simulation proceeds sequentially through 52 weeks, compounding wee
 3. **Lowest loss probability** (16.23%) among quality strategies
 4. **Simple implementation** - buy and hold, no rebalancing
 5. **Validates portfolio theory** - diversification mathematically optimal
+
+![Distribution Comparison](Q5/Q5.4/Distribution_Comparison.png)
 
 ##### Strategy D: Dynamic Rebalancing (35% COP / 35% S&P / 30% Cash)
 - **Return**: 12.61% (Lowest) | **Risk**: 17.36% | **Sharpe**: 0.6685
@@ -415,6 +429,8 @@ Where μ_historical is the sample mean return, σₜ follows GARCH(1,1) dynamics
 - Bootstrap: Resamples actual historical periods (some were exceptional)
 - GARCH: Builds realistic volatility paths from estimated model (captures clustering)
 - **Best practice**: Use both; actual risk lies between them
+
+![GARCH Risk-Return Profile](Q5/Q6_GARCH/Risk_Return_Profile_GARCH.png)
 
 ---
 
