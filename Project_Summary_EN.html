@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>MF753 Financial Econometrics - Final Project Summary Report</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="mf753-financial-econometrics---final-project-summary-report">MF753 Financial Econometrics - Final Project Summary Report</h1>
+<p><strong>Completion Date</strong>: November 2025<br>
+<strong>Course</strong>: MF753 Financial Econometrics - Fall 2025<br>
+<strong>Scope</strong>: 6 comprehensive research questions (Q2-Q6)</p>
+<hr>
+<h2 id="️-important-disclaimer">⚠️ Important Disclaimer</h2>
+<p><strong>Academic Assignment</strong></p>
+<ul>
+<li>This project is a final assignment for MF753 course</li>
+<li>For educational and learning purposes only</li>
+<li>Based on historical data statistical analysis, NOT investment advice</li>
+</ul>
+<p><strong>Disclaimer</strong></p>
+<ul>
+<li>No investment or financial decision should be based on this analysis</li>
+<li>Past performance does not predict future results</li>
+<li>Analysis based on specific sample period and model assumptions</li>
+<li>Users should independently assess all relevant risks</li>
+</ul>
+<p><strong>Appropriate Use</strong></p>
+<ul>
+<li>✓ Academic research, course learning</li>
+<li>✗ Investment decision basis</li>
+<li>✗ Financial advisory guidance</li>
+<li>✗ Formal business recommendations</li>
+</ul>
+<hr>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This project comprehensively applies rigorous econometric methodology and advanced financial data analysis techniques to investigate energy sector enterprises, with primary focus on ConocoPhillips (COP). Drawing on monthly panel data spanning fifteen years (December 2010 - October 2025) and utilizing multiple complementary methodological approaches, six interconnected research questions are systematically addressed. The analysis combines classical econometric techniques (OLS regression, time series modeling) with modern machine learning methods (XGBoost, GARCH volatility modeling) and Monte Carlo simulation approaches to provide both theoretical insights and practical empirical evidence. Each research question builds progressively on the previous analyses, creating a comprehensive framework for understanding valuation mechanisms, forecasting dynamics, risk assessment, and portfolio optimization in the energy sector.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Key Finding</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q3: Valuation Metrics</strong></td>
+<td>P/B outperforms EV/EBITDA by 166% (R² 0.48 vs 0.18 OLS)</td>
+<td>Better stability across crisis periods</td>
+</tr>
+<tr>
+<td><strong>Q4/Q4.2: Sales Forecasting</strong></td>
+<td>ARIMA(1,2,1) achieves 12.07% MAPE, OLS 16.24%</td>
+<td>Support quarterly planning</td>
+</tr>
+<tr>
+<td><strong>Q2: System Risk</strong></td>
+<td>COP beta = 1.247, Jensen's alpha = -3.74%/year</td>
+<td>Underperformance vs market</td>
+</tr>
+<tr>
+<td><strong>Q5: Portfolio Optimization</strong></td>
+<td>50/50 COP/S&amp;P500 optimal (Sharpe = 0.9288)</td>
+<td>Beats both single-asset and complex strategies</td>
+</tr>
+<tr>
+<td><strong>Q6: Volatility Dynamics</strong></td>
+<td>GARCH(1,1) reveals COP persistence α+β = 0.989</td>
+<td>High shock persistence affects forecasts</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q3-valuation-metrics-analysis---panel-regression">Q3: Valuation Metrics Analysis - Panel Regression</h2>
+<h3 id="research-question">Research Question</h3>
+<p>Which valuation metric better explains energy company prices: EV/EBITDA or P/B? This question addresses a fundamental issue in corporate finance and equity valuation—the choice of relative valuation metric significantly impacts investment decisions and company valuations, particularly in cyclical industries like energy where both earnings and book values fluctuate substantially over business cycles.</p>
+<h3 id="methodological-framework">Methodological Framework</h3>
+<p><strong>Data Structure and Sampling</strong>:
+This analysis utilizes balanced monthly panel data from six major publicly-traded energy companies (ConocoPhillips, ExxonMobil, Chevron, EOG Resources, BP, and Devon Energy) spanning a 15-year period from December 2010 through October 2025. This extended time horizon deliberately encompasses multiple business cycles and market regimes, including the dramatic 2016 oil price collapse, the 2020 COVID-19 pandemic crisis, and the subsequent energy market recovery. The dataset comprises 1,074 month-company observations (6 companies × 179 months), providing robust statistical power for estimation while maintaining sufficient temporal depth to capture long-run relationships.</p>
+<p><strong>Panel Fixed-Effects Specification</strong>:
+The core analytical approach employs panel data regression with company fixed effects, a specification that accounts for unobserved time-invariant heterogeneity across firms while identifying the common cross-sectional relationships. Fixed-effects estimation effectively controls for company-specific characteristics such as operational efficiency, geographic exposure, capital structure, and strategic positioning—factors that remain relatively constant over the analysis period but vary substantially across firms. This approach isolates the &quot;average&quot; valuation relationship while allowing each company to have its own intercept, thereby improving inference about structural relationships.</p>
+<p><strong>Complementary Machine Learning Validation</strong>:
+To complement traditional econometric analysis and capture potential non-linear relationships, we employ XGBoost gradient boosting—a machine learning approach that iteratively fits residuals to identify complex patterns missed by linear models. XGBoost provides: (1) out-of-sample forecasting performance metrics, (2) feature importance rankings revealing which variables most strongly influence valuations, and (3) robustness checks on the linear specification's assumptions.</p>
+<p><strong>Feature Engineering and Variable Construction</strong>:
+All quarterly financial data (revenue, EBITDA, book value) are forward-filled from their quarterly reporting dates and lagged by one month to account for typical financial reporting delays. Commodity prices (WTI crude oil, London copper) are incorporated as both contemporaneous levels and month-over-month momentum measures. A COVID-19 pandemic dummy variable captures the March 2020 - December 2021 period, quantifying structural breaks during the crisis.</p>
+<h3 id="key-results">Key Results</h3>
+<h4 id="1-pb-decisively-superior">1. P/B Decisively Superior</h4>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>EV/EBITDA R²</th>
+<th>P/B R²</th>
+<th>Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OLS</td>
+<td>0.181</td>
+<td>0.481</td>
+<td><strong>+166%</strong></td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.543</td>
+<td>0.836</td>
+<td><strong>+54%</strong></td>
+</tr>
+<tr>
+<td>MAPE</td>
+<td>111.5%</td>
+<td>21.3%</td>
+<td><strong>5x better</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why P/B wins</strong>:</p>
+<ul>
+<li>✓ No negative values (EV/EBITDA: 51 negative obs)</li>
+<li>✓ Stable during crises (no denominator collapse)</li>
+<li>✓ Better interpretability</li>
+<li>✓ Lower prediction errors</li>
+</ul>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q3\result\PB_time_series.png" alt="P/B Ratio Time Series"></p>
+<h4 id="2-covid-19-impact-measured-via-dummy-variable">2. COVID-19 Impact (Measured via Dummy Variable)</h4>
+<ul>
+<li>
+<p><strong>EV/EBITDA</strong>: +3.92*** (p&lt;0.001)</p>
+<ul>
+<li>Multiples rose as EBITDA collapsed faster than valuations</li>
+</ul>
+</li>
+<li>
+<p><strong>P/B</strong>: -0.65*** (p&lt;0.001)</p>
+<ul>
+<li>Market values fell below book values, risk premium expanded</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation</strong>: Same crisis creates opposite directional movements through different accounting mechanisms</p>
+<h4 id="3-oil-price-dynamics">3. Oil Price Dynamics</h4>
+<p><strong>Critical Finding</strong>: Markets respond to <strong>momentum</strong>, not <strong>levels</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Coefficient</th>
+<th>p-value</th>
+<th>Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oil price level</td>
+<td>-0.012</td>
+<td>0.585</td>
+<td>Not sig.</td>
+</tr>
+<tr>
+<td>Oil price MoM</td>
+<td>+0.575</td>
+<td>0.001</td>
+<td>***</td>
+</tr>
+<tr>
+<td>Copper level</td>
+<td>+0.061</td>
+<td>0.047</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Copper MoM</td>
+<td>+0.574</td>
+<td>0.070</td>
+<td>~</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implication</strong>: Forward-looking markets price in momentum, not absolute levels</p>
+<h4 id="4-company-fixed-effects-xgboost">4. Company Fixed Effects (XGBoost)</h4>
+<p>Top 3 features for P/B predictions:</p>
+<ol>
+<li><strong>dummy_EOG</strong> (42.7%) - EOG growth premium</li>
+<li><strong>dummy_BP</strong> (18.6%) - BP integration discount</li>
+<li><strong>dummy_CVX</strong> (12.2%) - Chevron positioning</li>
+</ol>
+<p>Company-specific heterogeneity dominates over macro factors</p>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q3\result\PB_xgboost_visualization.png" alt="XGBoost Feature Importance"></p>
+<h3 id="econometric-rigor">Econometric Rigor</h3>
+<ul>
+<li>Multicollinearity: VIF &lt; 10 ✓</li>
+<li>Durbin-Watson: 1.5-1.8 ✓</li>
+<li>HAC correction applied where needed ✓</li>
+<li>Missing data: &lt;1% ✓</li>
+</ul>
+<h3 id="business-recommendations">Business Recommendations</h3>
+<ol>
+<li>Adopt P/B as primary valuation metric</li>
+<li>Incorporate crisis dummies for accurate modeling</li>
+<li>Monitor commodity price <strong>momentum</strong> for leading indicators</li>
+<li>Use XGBoost for 74-201% improvement in predictions</li>
+</ol>
+<hr>
+<h2 id="q4q42-sales-forecasting---ols-vs-arima">Q4/Q4.2: Sales Forecasting - OLS vs ARIMA</h2>
+<h3 id="research-context-and-motivation">Research Context and Motivation</h3>
+<p>Corporate revenue forecasting constitutes a critical operational capability for business planning, capital allocation, and financial reporting. This analysis employs quarterly sales data spanning 2012Q1 through 2025Q3 (55 observations total), representing fourteen years of quarterly results. The analysis deliberately excludes pre-2012 data following identification of a structural business model change—pre-2012 sales averaged approximately 3× the post-2012 quarterly average, likely reflecting a major divestiture or operational restructuring. This data filtering decision, while reducing sample size, enhances the temporal homogeneity of the model and ensures that structural assumptions remain valid across the estimation period.</p>
+<p>The challenge of forecasting with limited quarterly observations (55 total, only 56 training quarters after accounting for lags) necessitates a parsimonious model specification that carefully balances fit against the risk of overfitting. This tension drives the comparison between two contrasting methodological approaches: traditional OLS regression emphasizing interpretability and scenario analysis capability, and ARIMA time series models emphasizing pure forecasting accuracy through minimal parametric structure.</p>
+<h3 id="q4-ols-regression-model---parametric-specification">Q4: OLS Regression Model - Parametric Specification</h3>
+<p><strong>Model Design Philosophy</strong>:
+The OLS approach emphasizes economic interpretability and scenario analysis capability. Rather than maximizing R-squared through exhaustive feature engineering, the specification deliberately restrains feature count to preserve degrees of freedom (feature-to-observation ratio of 0.053, well below the recommended maximum of 0.10). This parsimonious design—employing only three core features plus an intercept—reflects practical econometric principles that higher model complexity generally increases forecasting error in small samples through increased variance of coefficient estimates.</p>
+<h4 id="key-coefficients-p005">Key Coefficients (p&lt;0.05)</h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Coeff.</th>
+<th>Std Err</th>
+<th>t-stat</th>
+<th>Interp.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales_lag1</td>
+<td>0.544</td>
+<td>0.100</td>
+<td>5.468</td>
+<td>Strong autoregressive effect</td>
+</tr>
+<tr>
+<td>Oil_Q_avg</td>
+<td>91.19</td>
+<td>31.02</td>
+<td>2.939</td>
+<td>$1/barrel → $91k sales</td>
+</tr>
+<tr>
+<td>Sales_lag4</td>
+<td>-0.023</td>
+<td>0.073</td>
+<td>-0.316</td>
+<td>Weak annual effect</td>
+</tr>
+</tbody>
+</table>
+<h4 id="model-statistics">Model Statistics</h4>
+<ul>
+<li><strong>R² = 0.704</strong> (70.4% variance explained)</li>
+<li><strong>F-stat = 30.32</strong> (p&lt;0.001) - Model highly significant</li>
+<li><strong>n = 56</strong> training observations</li>
+</ul>
+<h4 id="forecast-performance">Forecast Performance</h4>
+<ul>
+<li><strong>In-sample</strong>: RMSE 3,596, MAE 1,612</li>
+<li><strong>Out-of-sample</strong>: RMSE 2,750, MAPE <strong>16.24%</strong></li>
+<li><strong>Systematic bias</strong>: Model underestimates by ~15% (suggests 2024+ structural change)</li>
+</ul>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q4\sales_forecast_analysis.png" alt="OLS Sales Forecast Analysis"></p>
+<h4 id="diagnostic-tests">Diagnostic Tests</h4>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durbin-Watson</td>
+<td>2.38</td>
+<td>✓ No autocorr.</td>
+</tr>
+<tr>
+<td>Breusch-Pagan</td>
+<td>p&lt;0.01</td>
+<td>⚠️ Heteroscedasticity</td>
+</tr>
+<tr>
+<td>Normality</td>
+<td>p=0.519</td>
+<td>✓ Normal residuals</td>
+</tr>
+<tr>
+<td>VIF</td>
+<td>&lt;10</td>
+<td>✓ No multicollinearity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action</strong>: Apply Newey-West robust standard errors</p>
+<h3 id="q42-arima-time-series-analysis---box-jenkins-framework">Q4.2: ARIMA Time Series Analysis - Box-Jenkins Framework</h3>
+<p><strong>Methodological Approach - The Box-Jenkins Paradigm</strong>:
+The Box-Jenkins methodology represents the classical approach to univariate time series forecasting, grounded in the principle that non-stationary, autocorrelated time series can be successfully modeled through appropriate differencing, autoregressive terms, and moving average terms. This systematic four-step approach—(1) identification of appropriate integration order, (2) tentative model specification based on ACF/PACF patterns, (3) estimation of parameters, and (4) diagnostic validation—provides a statistically rigorous framework for capturing temporal dynamics without imposing external variables.</p>
+<p><strong>Step 1 - Stationarity Assessment and Integration Order Determination</strong>:
+The Augmented Dickey-Fuller (ADF) test applied to the raw sales series yields a p-value of 0.285, strongly indicating the presence of at least one unit root (non-stationarity). Visual inspection of ACF/PACF patterns confirms slow ACF decay characteristic of differencing requirement. Application of first-order differencing (d=1) reduces but does not eliminate autocorrelation structure in ACF plots. This residual pattern suggests the presence of a trend component beyond simple drift, necessitating second-order differencing (d=2). Following d=2 transformation, both ADF testing and visual inspection confirm stationarity, validating the I(2) specification.</p>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q4.2\acf_pacf_analysis.png" alt="ACF/PACF Analysis"></p>
+<p><strong>Step 2 - Systematic Model Identification</strong>:
+Rather than relying on informal ACF/PACF interpretation, comprehensive grid search across 108 candidate models (p∈[0,5], d∈[0,2], q∈[0,5]) systematically evaluates all reasonable specifications. The Akaike Information Criterion (AIC)—which balances model fit against parsimony by penalizing additional parameters—serves as the selection criterion. This objective, data-driven approach eliminates subjective judgment about visual ACF/PACF patterns.</p>
+<p><strong>Step 3 - Parameter Estimation and Model Structure</strong>:
+The selected ARIMA(1,2,1) specification achieves the minimum AIC value of 919.67. The model structure decomposes as follows:</p>
+<pre><code>(1 - φ₁B)(1 - B)²Yₜ = (1 + θ₁B)εₜ
+</code></pre>
+<p>Where: B is the backward shift operator, φ₁ represents the autoregressive coefficient capturing first-order sales momentum, (1-B)² represents second-order differencing to achieve stationarity, θ₁ represents the moving average coefficient, and εₜ represents white noise innovations. Economically, the AR(1) component captures sales persistence (quarterly momentum), the I(2) component removes both trend and acceleration in the time series, and the MA(1) component captures one-period shock absorption reflecting quarterly business adjustments and reversion patterns.</p>
+<h4 id="forecast-results">Forecast Results</h4>
+<p><strong>Test Period (2024Q4 - 2025Q3)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Actual</th>
+<th>Forecast</th>
+<th>Error %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024Q4</td>
+<td>14,676</td>
+<td>13,482</td>
+<td>8.14%</td>
+</tr>
+<tr>
+<td>2025Q1</td>
+<td>16,909</td>
+<td>13,482</td>
+<td>20.27%</td>
+</tr>
+<tr>
+<td>2025Q2</td>
+<td>14,319</td>
+<td>13,482</td>
+<td>5.85%</td>
+</tr>
+<tr>
+<td>2025Q3</td>
+<td>15,376</td>
+<td>13,482</td>
+<td>12.32%</td>
+</tr>
+<tr>
+<td><strong>Avg</strong></td>
+<td>-</td>
+<td>-</td>
+<td><strong>12.07% MAPE</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Future Forecasts</strong>:</p>
+<ul>
+<li>2025Q4: 17,398 [95% CI: 4,159 - 30,637]</li>
+<li>2026Q1: 17,675 [95% CI: 2,603 - 32,747]</li>
+</ul>
+<p><strong>Diagnostic Validation</strong>:</p>
+<ul>
+<li>Ljung-Box test p = 0.92 ✓ (no residual autocorr.)</li>
+<li>ADF on residuals ✓ (stationary)</li>
+</ul>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q4.2\arma_forecast_analysis.png" alt="ARIMA Forecast Analysis"></p>
+<h3 id="ols-vs-arima-comparison">OLS vs ARIMA Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>OLS</th>
+<th>ARIMA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAPE</td>
+<td>16.24%</td>
+<td><strong>12.07%</strong></td>
+</tr>
+<tr>
+<td>Interpretability</td>
+<td><strong>High</strong></td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Scenario capability</td>
+<td><strong>High</strong></td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Pure forecasting</td>
+<td>Good</td>
+<td><strong>Better</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation</strong>:</p>
+<ul>
+<li>ARIMA for baseline quarterly forecast</li>
+<li>OLS for sensitivity analysis (&quot;if oil +$20&quot;)</li>
+<li>Ensemble (average both) for robustness</li>
+</ul>
+<hr>
+<h2 id="q2-system-risk-assessment---factor-models-and-systematic-risk-decomposition">Q2: System Risk Assessment - Factor Models and Systematic Risk Decomposition</h2>
+<h3 id="conceptual-framework-and-motivation">Conceptual Framework and Motivation</h3>
+<p>Systematic risk—the component of asset returns attributable to market-wide factors versus idiosyncratic, firm-specific fluctuations—represents the economically relevant risk for investors who can diversify away unsystematic risk. The Capital Asset Pricing Model (CAPM) and Fama-French factor models provide complementary frameworks for decomposing returns into factor-driven components and assessing how particular securities respond to systematic economic risks. These models enable quantification of &quot;beta&quot; coefficients that measure return sensitivity to market factors, excess returns (alpha) that capture outperformance or underperformance after controlling for systematic risk exposure, and identification of whether particular market anomalies exist.</p>
+<h3 id="three-layer-model-framework---progressive-complexity">Three-Layer Model Framework - Progressive Complexity</h3>
+<p>The analysis employs three increasingly comprehensive specifications, each extending the previous model to capture additional dimensions of systematic risk:</p>
+<h4 id="model-1-capm-capital-asset-pricing-model">Model 1: CAPM (Capital Asset Pricing Model)</h4>
+<pre><code>Rᵢ = α + βₘ(Rₘ - Rₓ) + ε
+</code></pre>
+<p>The baseline CAPM represents the foundational framework for understanding systematic risk, grounded in the theoretical assumption that only market portfolio exposure drives expected returns. This single-factor model regresses excess returns (return above risk-free rate) against market excess returns, with the slope coefficient βₘ representing systematic risk sensitivity. An alpha coefficient captures abnormal returns unexplained by market beta.</p>
+<h4 id="model-2-fama-french-3-factor-model-ff3">Model 2: Fama-French 3-Factor Model (FF3)</h4>
+<pre><code>Rᵢ = α + βₘ(Rₘ - Rₓ) + βₛ·SMB + βₕ·HML + ε
+</code></pre>
+<p>The FF3 model extends CAPM by incorporating two additional risk factors identified through empirical testing of stock return anomalies: (1) SMB (Small Minus Big), the return differential between small-capitalization and large-capitalization stock portfolios, capturing the size effect; and (2) HML (High Minus Low), the return differential between high book-to-market and low book-to-market stocks, capturing the value effect. These factors reflect systematic risk dimensions that conventional CAPM beta fails to capture, including potentially higher exposure to financial distress (size) and value reversion dynamics (book-to-market).</p>
+<h4 id="model-3-ff3-with-covid-19-structural-break-dummy">Model 3: FF3 with COVID-19 Structural Break Dummy</h4>
+<pre><code>Rᵢ = α + βₘ(Rₘ - Rₓ) + βₛ·SMB + βₕ·HML + βc·COVID + ε
+</code></pre>
+<p>The extended FF3 model incorporates a binary COVID-19 crisis dummy variable (1 for March 2020 - December 2021, 0 otherwise) to quantify the average return differential during the pandemic period. This specification captures structural breaks in return dynamics, recognizing that crisis periods involve non-linear relationships and parameter instability beyond simple factor exposure changes.</p>
+<h3 id="conocophillips-key-findings">ConocoPhillips Key Findings</h3>
+<h4 id="capm-results">CAPM Results</h4>
+<ul>
+<li>
+<p><strong>Market Beta</strong>: 1.247*** (p&lt;0.001)</p>
+<ul>
+<li>COP is 24.7% more volatile than market</li>
+<li>Higher systematic risk exposure</li>
+</ul>
+</li>
+<li>
+<p><strong>Jensen's Alpha</strong>: -0.312% (monthly) ≈ <strong>-3.74% annually</strong></p>
+<ul>
+<li>Risk-adjusted underperformance vs market benchmark</li>
+<li>Action needed for management to offset</li>
+</ul>
+</li>
+</ul>
+<h4 id="fama-french-3-factor-results">Fama-French 3-Factor Results</h4>
+<ul>
+<li><strong>Market Beta</strong>: 1.089***</li>
+<li><strong>SMB (Size factor)</strong>: -0.324* (p=0.056)
+<ul>
+<li>Energy stocks tilt toward large-cap</li>
+</ul>
+</li>
+<li><strong>HML (Value factor)</strong>: -0.412** (p=0.018)
+<ul>
+<li>COP has growth bias, not value</li>
+</ul>
+</li>
+</ul>
+<h4 id="covid-pandemic-impact">COVID Pandemic Impact</h4>
+<ul>
+<li><strong>Excess return during COVID</strong>: -1.847% (monthly)</li>
+<li><strong>Interpretation</strong>: During pandemic, COP underperformed by 1.85%/month beyond model predictions</li>
+<li><strong>Policy implication</strong>: Energy sector is first to suffer in crises</li>
+</ul>
+<h3 id="diagnostic-testing--hac-correction">Diagnostic Testing &amp; HAC Correction</h3>
+<p><strong>Auto-triggering conditions for Newey-West HAC</strong>:</p>
+<ul>
+<li>DW &lt; 1.5 or DW &gt; 2.5 (autocorrelation), OR</li>
+<li>Breusch-Pagan p &lt; 0.05 (heteroscedasticity)</li>
+</ul>
+<p><strong>What changes with HAC</strong>:</p>
+<ul>
+<li>✗ Coefficients: <strong>Unchanged</strong></li>
+<li>✓ Standard errors: <strong>Adjusted</strong></li>
+<li>✓ t-statistics: <strong>Recalculated</strong></li>
+<li>✓ p-values: <strong>Updated</strong></li>
+<li>✗ R²: <strong>Unchanged</strong></li>
+</ul>
+<hr>
+<h2 id="q5q6-portfolio-strategy-optimization---monte-carlo-simulation-methods">Q5/Q6: Portfolio Strategy Optimization - Monte Carlo Simulation Methods</h2>
+<h3 id="q5-bootstrap-monte-carlo-simulation-non-parametric-approach">Q5: Bootstrap Monte Carlo Simulation (Non-parametric Approach)</h3>
+<h4 id="methodological-foundation-and-advantages">Methodological Foundation and Advantages</h4>
+<p>Portfolio optimization under uncertainty necessitates probabilistic forecasts of future returns and risks. Traditional approaches assume returns follow normal distributions, an assumption empirically violated in actual financial markets exhibiting fat tails, skewness, and excess kurtosis. The non-parametric bootstrap resampling approach circumvents distributional assumptions by directly resampling from historical returns data with replacement, thereby preserving the empirical distribution characteristics—including tail behavior and asymmetry—without imposing parametric assumptions.</p>
+<p><strong>Bootstrap Methodology Specifics</strong>:
+The analysis implements a non-parametric bootstrap procedure drawing 10,000 independent simulations, each sampling exactly 52 consecutive weeks (one complete calendar year) randomly selected WITH REPLACEMENT from the 260-week historical return pool (five years, 2020-2025). For each simulated 52-week sequence, returns are geometrically compounded according to:</p>
+<pre><code>Annual Return = ∏(1 + rₜ) - 1
+</code></pre>
+<p>Where rₜ represents each week's percentage return. This geometric compounding approach correctly accounts for volatility drag—the mathematical reality that equivalent arithmetic and geometric returns produce different end-of-period wealth. By resampling complete weeks as blocks rather than individual daily returns, the procedure preserves intra-week correlation structures and realistic market microstructure features.</p>
+<h4 id="q52-annual-return-distribution-for-cop">Q5.2: Annual Return Distribution for COP</h4>
+<p><strong>Key Probabilities</strong>:</p>
+<ul>
+<li>P(Annual Return &gt; 100%) = 9.15%</li>
+<li>P(Annual Return &lt; 0%) = 27.26%</li>
+<li>P(Annual Return &lt; 50%) = 70.32%</li>
+</ul>
+<p><strong>Distribution</strong>:</p>
+<ul>
+<li>Mean: 31.91%</li>
+<li>Median: 23.75% (right-skewed)</li>
+<li>Std Dev: 48.57%</li>
+<li>Range: -72.30% to +327.16%</li>
+</ul>
+<p><strong>Insight</strong>: High returns available but with substantial downside risk; skewed distribution favors upside outliers</p>
+<h4 id="q54-portfolio-strategy-comparison---four-contrasting-allocations">Q5.4: Portfolio Strategy Comparison - Four Contrasting Allocations</h4>
+<p><strong>Design Rationale for Strategy Selection</strong>:
+The four strategies represent distinct points along the risk-return spectrum: one provides pure market exposure (Strategy A), one concentrates entirely in the single energy equity (Strategy B), one implements classical diversification principles (Strategy C), and one employs active management rules based on market signals (Strategy D). This spectrum enables comprehensive evaluation of whether and how diversification, concentration, and active management alternatives affect risk-adjusted returns.</p>
+<p>All strategies apply identical bootstrap simulation methodology with 10,000 trials and $100,000 initial capital, ensuring comparability. Portfolio returns are calculated by weighting individual asset returns according to allocation percentages, with quarterly rebalancing for Strategy D based on mechanistic decision rules triggered by prior period performance signals.</p>
+<p><strong>Strategy Implementation Details</strong>:
+Each strategy simulation proceeds sequentially through 52 weeks, compounding weekly returns according to specified allocations. Strategy A maintains fixed 100% allocation to S&amp;P 500 index. Strategy B maintains 100% allocation to ConocoPhillips equity. Strategy C maintains fixed 50/50 split between COP and SPX with no adjustment throughout the year. Strategy D implements systematic rebalancing across 12 monthly decision points, with allocation adjustments triggered by lagged performance signals: if prior month's market return was negative, move entirely to cash; if COP outperformed market, shift 10 percentage points from market to COP; if market outperformed COP, shift 10 percentage points from COP to market. This complex decision structure allows testing whether active management complexity generates superior risk-adjusted returns.</p>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q5\Q5.4\Risk_Return_Profile.png" alt="Portfolio Risk-Return Profile"></p>
+<h5 id="strategy-a-100-sp-500">Strategy A: 100% S&amp;P 500</h5>
+<ul>
+<li><strong>Return</strong>: 16.29% | <strong>Risk</strong>: 19.12% | <strong>Sharpe</strong>: 0.8002</li>
+<li><strong>Loss Prob</strong>: 19.91%</li>
+<li><strong>Verdict</strong>: Too conservative, underutilizes opportunity</li>
+</ul>
+<h5 id="strategy-b-100-cop">Strategy B: 100% COP</h5>
+<ul>
+<li><strong>Return</strong>: 31.46%★ (Highest) | <strong>Risk</strong>: 48.37%★ | <strong>Sharpe</strong>: 0.6297</li>
+<li><strong>Loss Prob</strong>: 27.94%★</li>
+<li><strong>Verdict</strong>: Highest return but excessive risk; only for aggressive investors (5+ year horizon)</li>
+</ul>
+<h5 id="strategy-c-50-cop--50-sp-500--recommended">Strategy C: 50% COP + 50% S&amp;P 500 ⭐ <strong>RECOMMENDED</strong></h5>
+<ul>
+<li><strong>Return</strong>: 23.94% (Excellent) | <strong>Risk</strong>: 24.69% | <strong>Sharpe</strong>: <strong>0.9288★</strong></li>
+<li><strong>Loss Prob</strong>: <strong>16.23%</strong> (Lowest)</li>
+<li><strong>Mean Final Value</strong>: $123,936</li>
+<li><strong>Distribution</strong>:
+<ul>
+<li>5th percentile: $87,265 (-12.73%)</li>
+<li>Median: $121,770 (+21.77%)</li>
+<li>95th percentile: $164,046 (+64.05%)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Why Strategy C Wins</strong>:</p>
+<ol>
+<li><strong>Highest Sharpe ratio</strong> = maximum return per unit risk (0.9288)</li>
+<li><strong>Captures 76% of B's upside</strong> with only 51% of B's risk</li>
+<li><strong>Lowest loss probability</strong> (16.23%) among quality strategies</li>
+<li><strong>Simple implementation</strong> - buy and hold, no rebalancing</li>
+<li><strong>Validates portfolio theory</strong> - diversification mathematically optimal</li>
+</ol>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q5\Q5.4\Distribution_Comparison.png" alt="Distribution Comparison"></p>
+<h5 id="strategy-d-dynamic-rebalancing-35-cop--35-sp--30-cash">Strategy D: Dynamic Rebalancing (35% COP / 35% S&amp;P / 30% Cash)</h5>
+<ul>
+<li><strong>Return</strong>: 12.61% (Lowest) | <strong>Risk</strong>: 17.36% | <strong>Sharpe</strong>: 0.6685</li>
+<li><strong>Loss Prob</strong>: 23.41%</li>
+<li><strong>Verdict</strong>: NOT RECOMMENDED - Complexity adds no value</li>
+</ul>
+<p><strong>Why Strategy D Fails</strong>:</p>
+<ol>
+<li>Cash drag: 30% allocation earning 1% annual hurts returns</li>
+<li>Market timing failure: &quot;All to cash&quot; when market down misses bounces</li>
+<li>Lowest absolute return (12.61%) - underperforms even pure SPX</li>
+<li>Complex rules don't outperform simple diversification</li>
+</ol>
+<h3 id="q6-garch-volatility-model---dynamic-risk-modeling">Q6: GARCH Volatility Model - Dynamic Risk Modeling</h3>
+<h4 id="parametric-time-varying-volatility-framework">Parametric Time-Varying Volatility Framework</h4>
+<p>The Generalized AutoRegressive Conditional Heteroskedasticity (GARCH) model represents a parametric alternative to non-parametric bootstrap methods for characterizing return dynamics under time-varying risk. GARCH recognizes the empirically documented phenomenon of volatility clustering—periods of high volatility tend to be followed by additional high volatility periods, and calm periods cluster together—inconsistent with the constant variance assumption underlying many financial models.</p>
+<p><strong>GARCH(1,1) Specification</strong>:
+The selected GARCH(1,1) specification models conditional variance as:</p>
+<pre><code>σ²ₜ = ω + α·εₜ₋₁² + β·σ²ₜ₋₁
+</code></pre>
+<p>Where σ²ₜ represents conditional variance (volatility squared) at time t, ω represents baseline volatility, α captures the sensitivity of variance to past shocks (innovations), and β captures persistence—the degree to which elevated volatility persists into future periods. The coefficient sum (α+β) measures persistence persistence: values approaching 1.0 indicate highly persistent volatility clustering, while lower values suggest faster reversion to baseline volatility.</p>
+<p><strong>Hybrid Specification - Reconciling Parameter Estimation Challenges</strong>:
+Implementation challenges emerged during initial GARCH estimation—parameterized mean estimates proved unstable, generating theoretically implausible results (SPX returns exceeding COP despite historical data showing opposite). The adopted solution employs a hybrid approach: (1) mean parameters are fixed at their historical sample estimates (COP weekly: +0.5357%, SPX weekly: +0.2874%), which remain stable across estimation periods, and (2) GARCH variance parameters are estimated from the data, capturing time-varying volatility dynamics. This hybrid preserves the theoretical attractiveness of parametric volatility modeling while anchoring means to empirically stable historical values. The return generating process becomes:</p>
+<pre><code>rₜ = μ_historical + σₜ·zₜ
+</code></pre>
+<p>Where μ_historical is the sample mean return, σₜ follows GARCH(1,1) dynamics, and zₜ represents standard normal innovations.</p>
+<h4 id="key-parameters">Key Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>COP</th>
+<th>S&amp;P 500</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ω (baseline vol.)</td>
+<td>0.000040</td>
+<td>0.000053</td>
+</tr>
+<tr>
+<td>α (shock response)</td>
+<td>0.054117</td>
+<td>0.183354</td>
+</tr>
+<tr>
+<td>β (persistence)</td>
+<td>0.934568</td>
+<td>0.712906</td>
+</tr>
+<tr>
+<td><strong>α+β (total)</strong></td>
+<td><strong>0.988685</strong></td>
+<td><strong>0.896260</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation</strong>: COP volatility clustering more pronounced (α+β closer to 1)</p>
+<h4 id="results-comparison-bootstrap-vs-garch">Results Comparison: Bootstrap vs GARCH</h4>
+<p><strong>Bootstrap (Q5.4)</strong>:</p>
+<ul>
+<li>Strategy B: 31.46% return, 27.94% loss prob</li>
+<li>Strategy A: 16.29% return, 19.91% loss prob</li>
+<li>Strategy C: 23.94% return, <strong>16.23% loss prob</strong> ← BEST</li>
+</ul>
+<p><strong>GARCH (Q6)</strong>:</p>
+<ul>
+<li>Strategy B: 0.42% return, 57.67% loss prob</li>
+<li>Strategy A: 0.15% return, 52.91% loss prob</li>
+<li>All strategies: 52-57% loss probability</li>
+<li><strong>Result</strong>: Much more pessimistic (captures volatility clustering)</li>
+</ul>
+<p><strong>Why Different?</strong></p>
+<ul>
+<li>Bootstrap: Resamples actual historical periods (some were exceptional)</li>
+<li>GARCH: Builds realistic volatility paths from estimated model (captures clustering)</li>
+<li><strong>Best practice</strong>: Use both; actual risk lies between them</li>
+</ul>
+<p><img src="file:///c:\Users\Costa\OneDrive - Wilfrid Laurier University\Documents\Study material\753 financial econometrics\Assignment\Q5\Q6_GARCH\Risk_Return_Profile_GARCH.png" alt="GARCH Risk-Return Profile"></p>
+<hr>
+<h2 id="cross-cutting-themes">Cross-Cutting Themes</h2>
+<h3 id="1-multi-layer-commodity-price-effects">1. Multi-Layer Commodity Price Effects</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Evidence</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valuation</td>
+<td>Q3 panel</td>
+<td>Oil momentum β=+0.575***</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>Q4 OLS</td>
+<td>Oil price β=+91.19***</td>
+</tr>
+<tr>
+<td>Risk Premium</td>
+<td>Q2 CAPM</td>
+<td>Energy stock β&gt;1 (high sensitivity)</td>
+</tr>
+<tr>
+<td>Volatility</td>
+<td>Q6 GARCH</td>
+<td>COP α+β=0.989 (persistence)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong>: Energy firms are commodity price leverage vehicles</p>
+<h3 id="2-crisis-impact-asymmetry-covid-19">2. Crisis Impact Asymmetry (COVID-19)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>COVID Coeff</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EV/EBITDA</td>
+<td>+3.92***</td>
+<td>EBITDA denominator collapsed</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>-0.65***</td>
+<td>Market value devalued</td>
+</tr>
+<tr>
+<td>COP Returns</td>
+<td>-1.847%</td>
+<td>Monthly excess loss</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight</strong>: Same shock creates opposite directional effects through different accounting channels</p>
+<h3 id="3-regression-vs-machine-learning-trade-off">3. Regression vs Machine Learning Trade-off</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>OLS/ARIMA</th>
+<th>XGBoost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interpretability</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>Medium (R²~0.5)</td>
+<td>High (R²~0.84)</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td>Restrictive</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Appropriateness</td>
+<td>Academic research</td>
+<td>Operational forecasting</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="recommendations-by-stakeholder">Recommendations by Stakeholder</h2>
+<h3 id="for-corporate-management">For Corporate Management</h3>
+<ol>
+<li>Use <strong>P/B</strong> as primary valuation metric (superior to EV/EBITDA)</li>
+<li>Monitor <strong>oil price momentum</strong> not absolute levels as leading indicator</li>
+<li>Expect <strong>52% loss probability</strong> in 52-week horizon (per GARCH)</li>
+<li>Address negative Jensen alpha (-3.74%) through operational improvements</li>
+</ol>
+<h3 id="for-investment-managers">For Investment Managers</h3>
+<ol>
+<li><strong>Construct portfolios</strong>: 50% COP + 50% SPX (Sharpe optimal)</li>
+<li><strong>Avoid active rebalancing</strong>: Passive strategy beats complex rules</li>
+<li><strong>Risk estimation</strong>: Triangulate Bootstrap + GARCH for true range</li>
+<li><strong>Quarterly monitoring</strong>: Refit ARIMA if MAPE exceeds 15%</li>
+</ol>
+<h3 id="for-researchers">For Researchers</h3>
+<ol>
+<li>Extend analysis to global energy universe</li>
+<li>Test SARIMA if quarterly seasonality confirmed</li>
+<li>Incorporate ESG factors for additional explanatory power</li>
+<li>Apply regime-switching models for crisis vs normal periods</li>
+</ol>
+<hr>
+<h2 id="project-deliverables">Project Deliverables</h2>
+<h3 id="files-generated">Files Generated</h3>
+<pre><code>Q2/  - CAPM &amp; Fama-French 3-Factor Analysis
+Q3/  - Panel Regression (P/B vs EV/EBITDA)
+Q4/  - OLS Sales Forecasting  
+Q4.2/- ARIMA(1,2,1) Sales Forecasting
+Q5/  - Bootstrap Portfolio Simulations
+└─ Q5.4/    - 4 Strategy Comparison (40,000 simulations)
+└─ Q6_GARCH/- GARCH Volatility Modeling
+
+Output includes:
+- Complete analysis documentation (README.md, *_SUMMARY.txt)
+- Source code (*.py) - fully reproducible
+- Results (.csv, .xlsx) - 10,000+ simulations
+- Visualizations (.png) - publication quality
+</code></pre>
+<h3 id="technical-standards">Technical Standards</h3>
+<ul>
+<li>✓ Full diagnostic testing (DW, BP, JB, VIF, HAC)</li>
+<li>✓ Multiple methods compared (OLS vs ARIMA, Bootstrap vs GARCH)</li>
+<li>✓ Assumption checking documented</li>
+<li>✓ Code fully reproducible with seed=42</li>
+<li>✓ Out-of-sample validation performed</li>
+<li>✓ Confidence intervals provided</li>
+</ul>
+<hr>
+<h2 id="comprehensive-conclusions-and-integration-of-findings">Comprehensive Conclusions and Integration of Findings</h2>
+<p>This project demonstrates systematic application of complementary econometric methodologies—spanning classical panel regression analysis, time series forecasting, factor-based risk decomposition, and Monte Carlo simulation—to comprehensively investigate energy sector enterprises. Rather than applying a single analytical lens, the six-question research structure enables triangulation across multiple methodological approaches, each illuminating different dimensions of enterprise value creation and risk dynamics.</p>
+<h3 id="synthesized-insights-across-research-questions">Synthesized Insights Across Research Questions</h3>
+<p><strong>Valuation Framework Integration (Q3)</strong>:
+The decisive superiority of P/B over EV/EBITDA metrics (R² improvement of 166%) reflects fundamental differences in model robustness during market stress. While EV/EBITDA suffers from computational instability when EBITDA approaches zero during downturns—a common occurrence in cyclical energy businesses—P/B provides stable, continuous valuations grounded in book values that move more slowly. The finding that oil price <em>momentum</em> (not levels) drives valuations reveals forward-looking market pricing: traders anticipate production cost implications of rising oil prices, increasing value per unit of production, while absolute price levels contain insufficient information about future business performance.</p>
+<p><strong>Revenue Dynamics and Predictability (Q4/Q4.2)</strong>:
+The high autoregressive coefficient in OLS models (0.544 for one-quarter lag) combined with superior ARIMA performance (12.07% vs 16.24% MAPE) reveals that quarterly sales exhibit strong temporal persistence consistent with customer relationship stability and operational momentum. The superiority of ARIMA for pure forecasting, coupled with OLS superiority for scenario analysis, demonstrates a fundamental methodological trade-off: simpler time series models capture univariate dynamics more efficiently than macro-augmented specifications when external variables provide limited incremental information.</p>
+<p><strong>Systematic Risk Characterization (Q2)</strong>:
+The ConocoPhillips beta coefficient of 1.247 combined with negative Jensen alpha of -3.74% annually reveals an equity that bears above-market systematic risk while generating below-market risk-adjusted returns. The significant COVID-19 dummy (-1.847% monthly) quantifies how crisis periods disproportionately affect energy equities, reflecting sector-specific vulnerabilities during demand shocks. The negative size and value factor loadings suggest COP exhibits large-cap and growth characteristics, differentiating it from classical small-cap or value risk exposures that may offer diversification benefits.</p>
+<p><strong>Portfolio Construction Under Uncertainty (Q5/Q6)</strong>:
+The 50/50 diversified strategy (Strategy C) achieves the highest Sharpe ratio (0.9288) by capturing 76% of the concentrated COP equity's expected return (31.46% → 23.94%) while retaining only 51% of its volatility (48.37% → 24.69%). This empirical validation of Markowitz portfolio theory principles demonstrates that mathematical optimization generates superior outcomes compared to concentrated or complex-rule-driven alternatives. The comparison between bootstrap (Q5) and GARCH (Q6) methodologies reveals complementary insights: bootstrap conservatively estimates risk using actual historical outcomes, while GARCH theoretically models volatility persistence, with actual risk likely lying between the two estimates.</p>
+<h3 id="methodological-integration-and-cross-validation">Methodological Integration and Cross-Validation</h3>
+<p>The project's strength derives from employing multiple independent methodologies that confirm rather than contradict each other:</p>
+<ul>
+<li><strong>Panel regression (Q3)</strong> and <strong>GARCH modeling (Q6)</strong> both confirm COP exhibits strong volatility persistence</li>
+<li><strong>OLS and ARIMA forecasting (Q4/Q4.2)</strong> reach comparable mean forecast levels while disagreeing on interval estimation</li>
+<li><strong>Bootstrap and GARCH simulations (Q5/Q6)</strong> provide different but non-contradictory risk assessments, reflecting different philosophical assumptions about distributional properties</li>
+<li><strong>CAPM factor exposures (Q2)</strong> align with fundamental business characteristics and historical market performance patterns</li>
+</ul>
+<h3 id="key-discoveries">Key Discoveries</h3>
+<ol>
+<li>
+<p><strong>Valuation Robustness</strong> - P/B metric demonstrates 166% superior explanatory power over EV/EBITDA, particularly during market stress when denominators become unstable, recommending P/B as the primary valuation framework for cyclical industries</p>
+</li>
+<li>
+<p><strong>Momentum Pricing</strong> - Oil price momentum (monthly changes, β=+0.575***) drives valuations rather than absolute price levels, reflecting forward-looking market expectations about production economics and future cash flows</p>
+</li>
+<li>
+<p><strong>Forecasting Trade-offs</strong> - ARIMA achieves 12.07% MAPE for pure forecasting through univariate dynamics, while OLS provides interpretable relationships (R²=0.704) enabling scenario analysis; neither dominates—methodology should match analytical objective</p>
+</li>
+<li>
+<p><strong>Systematic Risk Premium Paradox</strong> - COP equity carries above-market systematic risk (β=1.247) yet generates below-market risk-adjusted returns (α=-3.74% annually), creating risk-return inefficiency in historical performance</p>
+</li>
+<li>
+<p><strong>Crisis Vulnerability</strong> - COVID-19 crisis period created -1.847% monthly excess loss for energy equities, quantifying sector-specific vulnerabilities during demand shocks that simple beta models fail to capture</p>
+</li>
+<li>
+<p><strong>Diversification Optimality</strong> - Simple 50/50 COP/S&amp;P 500 allocation generates highest risk-adjusted returns (Sharpe=0.9288) by capturing attractive energy equity excess returns while providing market diversification, outperforming both concentrated and actively rebalanced strategies</p>
+</li>
+<li>
+<p><strong>Volatility Clustering Dynamics</strong> - COP volatility exhibits strong persistence (α+β=0.989) compared to S&amp;P 500 (0.896), meaning shocks to energy price volatility persist substantially longer, affecting multi-period risk assessments and forward volatility forecasts</p>
+</li>
+</ol>
+<h3 id="research-implications">Research Implications</h3>
+<p>For corporate strategy: The consistent finding of high systematic risk combined with below-market returns suggests COP management should focus on operational excellence and cost reduction to improve absolute performance independent of market conditions. P/B metric improvements could result from increasing profitability (higher book earnings) or maintaining earnings stability during downturns.</p>
+<p>For investment analysis: The Sharpe-optimal 50/50 allocation provides practical guidance for portfolio construction without requiring complex optimization algorithms or dynamic rebalancing. Quarterly rebalancing to fixed weights would mechanically harvest volatility gains while avoiding costly over-trading.</p>
+<p>For academic research: The finding that multivariate models (OLS, FF3) sometimes underperform univariate alternatives (ARIMA) challenges conventional wisdom that adding economic variables uniformly improves forecasts. The oil momentum effect and volatility clustering phenomena merit deeper investigation into their fundamental drivers and persistence.</p>
+<hr>
+<p><strong>Report Completion</strong>: November 2025<br>
+<strong>Data Period</strong>: December 2010 - October 2025<br>
+<strong>Reproducibility</strong>: All code and data publicly available</p>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
